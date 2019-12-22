@@ -37,7 +37,7 @@ class WallpaperFragment : BaseFragment(), BaseViewListener<Wallpaper> {
     }
 
     private fun arrayFanArt(): MutableList<Wallpaper> {
-        val arrayLinkImage = RawDataHelper().fetchData(context, R.raw._asset_image_fanart)
+        val arrayLinkImage = RawDataHelper().fetchData(context, R.raw._asset_darth_vader)
 
         val arrayWallpaper = mutableListOf<Wallpaper>()
         for (i in 0 until arrayLinkImage.size) {
