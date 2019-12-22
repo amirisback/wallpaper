@@ -18,11 +18,17 @@
  -->
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-            android:id="@+id/toolbar_menu_copyright"
-            android:icon="@drawable/ic_toolbar_copyright"
-            android:title="@string/title_copyright"
-            app:showAsAction="ifRoom"/>
+        android:id="@+id/toolbar_menu_copyright"
+        android:icon="@drawable/ic_toolbar_copyright"
+        android:title="@string/title_copyright"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/toolbar_menu_favorite"
+        android:icon="@drawable/ic_star_unfavorite"
+        android:title="@string/title_favorite"
+        app:showAsAction="ifRoom" />
 </menu>
