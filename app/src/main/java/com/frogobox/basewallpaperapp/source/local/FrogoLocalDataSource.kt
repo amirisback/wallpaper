@@ -7,7 +7,6 @@ import  com.frogobox.basewallpaperapp.model.Favorite
 import  com.frogobox.basewallpaperapp.model.Wallpaper
 import  com.frogobox.basewallpaperapp.source.FrogoDataSource
 import  com.frogobox.basewallpaperapp.source.dao.FavoriteDao
-import  com.frogobox.basewallpaperapp.source.dao.WallpaperDao
 import  com.frogobox.basewallpaperapp.util.AppExecutors
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -34,43 +33,26 @@ import io.reactivex.schedulers.Schedulers
 class FrogoLocalDataSource private constructor(
     private val appExecutors: AppExecutors,
     private val sharedPreferences: SharedPreferences,
-    private val wallpaperDao: WallpaperDao,
     private val favoriteDao: FavoriteDao
 ) : FrogoDataSource {
-    override fun saveRoomFavorite(data: Favorite): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
-    override fun getRoomData(callback: FrogoDataSource.GetRoomDataCallBack<List<Wallpaper>>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun saveRoomFavorite(data: Favorite): Boolean {
+        appExecutors.diskIO.execute {
+            favoriteDao.insertData(data)
+        }
+        return true
     }
 
     override fun getRoomFavorite(callback: FrogoDataSource.GetRoomDataCallBack<List<Favorite>>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun updateRoomFavorite(
-        tableId: Int,
-        title: String,
-        description: String,
-        dateTime: String
-    ): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun searchRoomFavorite(
-        scriptId: String,
-        callback: FrogoDataSource.GetRoomDataCallBack<List<Favorite>>
-    ) {
         appExecutors.diskIO.execute {
-            favoriteDao.searchData(scriptId)
+            favoriteDao.getAllData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : BaseCallback<List<Favorite>>() {
                     override fun onCallbackSucces(data: List<Favorite>) {
                         callback.onShowProgressDialog()
                         callback.onSuccess(data)
-                        if (data.size == 0) {
+                        if (data.isEmpty()) {
                             callback.onEmpty()
                         }
                         callback.onHideProgressDialog()
@@ -93,11 +75,24 @@ class FrogoLocalDataSource private constructor(
     }
 
     override fun deleteRoomFavorite(tableId: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        appExecutors.diskIO.execute {
+            favoriteDao.deleteDataFromTableId(tableId)
+        }
+        return true
+    }
+
+    override fun deleteRoomFromWallpaperID(id: Int): Boolean {
+        appExecutors.diskIO.execute {
+            favoriteDao.deleteDataFromWallpaperId(id)
+        }
+        return true
     }
 
     override fun nukeRoomFavorite(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        appExecutors.diskIO.execute {
+            favoriteDao.nukeData()
+        }
+        return true
     }
 
 
@@ -129,7 +124,6 @@ class FrogoLocalDataSource private constructor(
         fun getInstance(
             appExecutors: AppExecutors,
             sharedPreferences: SharedPreferences,
-            wallpaperDao: WallpaperDao,
             favoriteDao: FavoriteDao
 
         ): FrogoLocalDataSource {
@@ -138,7 +132,6 @@ class FrogoLocalDataSource private constructor(
                     INSTANCE = FrogoLocalDataSource(
                         appExecutors,
                         sharedPreferences,
-                        wallpaperDao,
                         favoriteDao
                     )
                 }

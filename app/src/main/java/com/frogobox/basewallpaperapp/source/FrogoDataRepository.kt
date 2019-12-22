@@ -2,7 +2,6 @@ package  com.frogobox.basewallpaperapp.source
 
 
 import com.frogobox.basewallpaperapp.model.Favorite
-import com.frogobox.basewallpaperapp.model.Wallpaper
 import com.frogobox.basewallpaperapp.source.local.FrogoLocalDataSource
 import com.frogobox.basewallpaperapp.source.remote.FrogoRemoteDataSource
 
@@ -28,41 +27,25 @@ open class FrogoDataRepository(
     private val localDataSource: FrogoLocalDataSource
 ) : FrogoDataSource {
 
-
     override fun saveRoomFavorite(data: Favorite): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return localDataSource.saveRoomFavorite(data)
     }
 
-    override fun getRoomData(callback: FrogoDataSource.GetRoomDataCallBack<List<Wallpaper>>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 
     override fun getRoomFavorite(callback: FrogoDataSource.GetRoomDataCallBack<List<Favorite>>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun updateRoomFavorite(
-        tableId: Int,
-        title: String,
-        description: String,
-        dateTime: String
-    ): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun searchRoomFavorite(
-        scriptId: String,
-        callback: FrogoDataSource.GetRoomDataCallBack<List<Favorite>>
-    ) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return localDataSource.getRoomFavorite(callback)
     }
 
     override fun deleteRoomFavorite(tableId: Int): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return localDataSource.deleteRoomFavorite(tableId)
+    }
+
+    override fun deleteRoomFromWallpaperID(id: Int): Boolean {
+        return localDataSource.deleteRoomFromWallpaperID(id)
     }
 
     override fun nukeRoomFavorite(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return localDataSource.nukeRoomFavorite()
     }
 
     companion object {

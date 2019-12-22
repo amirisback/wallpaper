@@ -22,20 +22,7 @@ import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.TABLE
  *  com.frogobox.basewallpaperapp.model
  *
  */
-@Entity(tableName = TABLE_NAME_DATA)
 data class Wallpaper(
-
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "table_id")
-    var table_id: Int = 0,
-
-    @ColumnInfo(name = "type")
-    var type: String? = "",
-
-    @ColumnInfo(name = "linkImage")
-    var linkImage: String? = "",
-
-    @ColumnInfo(name = "favorite")
-    var favorite: Boolean? = false
-
+    var id: Int = 0,
+    var linkImage: String? = ""
 )

@@ -1,9 +1,8 @@
 package  com.frogobox.basewallpaperapp.util.helper
 
 import android.Manifest
-import android.os.Build
 import android.os.Environment
-import  com.frogobox.basewallpaperapp.BuildConfig
+import com.frogobox.basewallpaperapp.BuildConfig
 
 /**
  * Created by Faisal Amir
@@ -53,16 +52,24 @@ class ConstHelper {
         // Format Day
         const val DAY_WITH_DATE_TIME_ENGLISH = "EEE, MMM dd yyyy HH:mm" // Mon, Aug 12 2018 12:12
         const val DAY_WITH_DATE_TIME_LOCALE = "EEE, dd MMM yyyy HH:mm" // Sen, 12 Agt 2019 12:12
-        const val DAY_WITH_DATE_TIME_ENGLISH_FULL = "EEEE, MMMM dd yyyy HH:mm" // Monday, August 12 2018 12:12
-        const val DAY_WITH_DATE_TIME_LOCALE_FULL = "EEEE, dd MMMM yyyy HH:mm" // Senin, 12 Agustus 2018 12:12
+        const val DAY_WITH_DATE_TIME_ENGLISH_FULL =
+            "EEEE, MMMM dd yyyy HH:mm" // Monday, August 12 2018 12:12
+        const val DAY_WITH_DATE_TIME_LOCALE_FULL =
+            "EEEE, dd MMMM yyyy HH:mm" // Senin, 12 Agustus 2018 12:12
 
     }
 
     object RoomDatabase {
-        val DATABASE_NAME = {BuildConfig.DATABASE_NAME}
+        val DATABASE_NAME = { BuildConfig.DATABASE_NAME }
         const val BASE_TABLE_NAME = "table"
-        const val TABLE_NAME_DATA = "fashion_$BASE_TABLE_NAME"
+        const val TABLE_NAME_DATA = "wallpaper_$BASE_TABLE_NAME"
         const val TABLE_NAME_FAVORITE = "favorite_$TABLE_NAME_DATA"
+
+        const val ATTR_TABLE_ID = "table_id"
+        const val ATTR_ID = "id"
+        const val ATTR_LINK_IMAGE = "link_image"
+
+
     }
 
     object TypeData {
@@ -76,7 +83,8 @@ class ConstHelper {
     object Code {
         const val CODE_NAME = 1
         const val CODE_REQUEST_VIDEO_PERMISSIONS = 1
-        val CODE_VIDEO_PERMISSIONS = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
+        val CODE_VIDEO_PERMISSIONS =
+            arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
 
     }
 

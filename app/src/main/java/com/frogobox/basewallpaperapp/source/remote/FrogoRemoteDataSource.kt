@@ -1,10 +1,9 @@
 package  com.frogobox.basewallpaperapp.source.remote
 
 import android.content.Context
-import  com.frogobox.basewallpaperapp.model.Wallpaper
-import  com.frogobox.basewallpaperapp.model.Favorite
-import  com.frogobox.basewallpaperapp.source.FrogoDataSource
-import  com.frogobox.basewallpaperapp.util.helper.FunHelper.Func.noAction
+import com.frogobox.basewallpaperapp.model.Favorite
+import com.frogobox.basewallpaperapp.source.FrogoDataSource
+import com.frogobox.basewallpaperapp.util.helper.FunHelper.Func.noAction
 
 /**
  * Created by Faisal Amir
@@ -28,31 +27,15 @@ class FrogoRemoteDataSource(private val context: Context) : FrogoDataSource {
         return noAction()
     }
 
-    override fun getRoomData(callback: FrogoDataSource.GetRoomDataCallBack<List<Wallpaper>>) {
-        noAction()
-    }
-
     override fun getRoomFavorite(callback: FrogoDataSource.GetRoomDataCallBack<List<Favorite>>) {
         noAction()
     }
 
-    override fun updateRoomFavorite(
-        tableId: Int,
-        title: String,
-        description: String,
-        dateTime: String
-    ): Boolean {
+    override fun deleteRoomFavorite(tableId: Int): Boolean {
         return noAction()
     }
 
-    override fun searchRoomFavorite(
-        scriptId: String,
-        callback: FrogoDataSource.GetRoomDataCallBack<List<Favorite>>
-    ) {
-        noAction()
-    }
-
-    override fun deleteRoomFavorite(tableId: Int): Boolean {
+    override fun deleteRoomFromWallpaperID(id: Int): Boolean {
         return noAction()
     }
 

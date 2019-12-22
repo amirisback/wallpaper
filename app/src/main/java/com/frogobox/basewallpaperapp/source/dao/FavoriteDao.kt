@@ -4,6 +4,8 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import  com.frogobox.basewallpaperapp.model.Favorite
+import com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.ATTR_ID
+import com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.ATTR_TABLE_ID
 import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.TABLE_NAME_FAVORITE
 import io.reactivex.Single
 
@@ -33,13 +35,13 @@ interface FavoriteDao {
     @Insert
     fun insertData(data: Favorite)
 
-    @Query("DELETE FROM $TABLE_NAME_FAVORITE WHERE table_id = :tableId")
+    @Query("DELETE FROM $TABLE_NAME_FAVORITE WHERE $ATTR_TABLE_ID = :tableId")
     fun deleteDataFromTableId(tableId: Int)
 
-    @Query("DELETE FROM $TABLE_NAME_FAVORITE WHERE fashion_id = :scriptId")
-    fun deleteDataFromScriptId(scriptId: String)
+    @Query("DELETE FROM $TABLE_NAME_FAVORITE WHERE $ATTR_ID = :id")
+    fun deleteDataFromWallpaperId(id: Int)
 
-    @Query("SELECT * FROM $TABLE_NAME_FAVORITE WHERE fashion_id = :scriptId")
+    @Query("SELECT * FROM $TABLE_NAME_FAVORITE WHERE $ATTR_ID = :scriptId")
     fun searchData(scriptId: String): Single<List<Favorite>>
 
     @Query("DELETE FROM $TABLE_NAME_FAVORITE")

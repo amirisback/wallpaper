@@ -22,11 +22,13 @@ import java.util.concurrent.Executors
  *  com.frogobox.basewallpaperapp.util
  *
  */
-open class AppExecutors constructor(val diskIO: Executor =  DiskIOThreadExecutor(),
-                                    val networkIO: Executor = Executors.newFixedThreadPool(3),
-                                    val mainThread: Executor = MainThreadExecutor()) {
+open class AppExecutors constructor(
+    val diskIO: Executor = DiskIOThreadExecutor(),
+    val networkIO: Executor = Executors.newFixedThreadPool(3),
+    val mainThread: Executor = MainThreadExecutor()
+) {
 
-    private class MainThreadExecutor: Executor {
+    private class MainThreadExecutor : Executor {
         private val mainThreadHandler = Handler(Looper.getMainLooper())
 
         override fun execute(command: Runnable) {

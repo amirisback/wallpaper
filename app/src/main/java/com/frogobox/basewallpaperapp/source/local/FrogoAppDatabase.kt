@@ -6,12 +6,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
-import  com.frogobox.basewallpaperapp.BuildConfig
-import  com.frogobox.basewallpaperapp.model.Wallpaper
-import  com.frogobox.basewallpaperapp.model.Favorite
-import  com.frogobox.basewallpaperapp.source.dao.WallpaperDao
-import  com.frogobox.basewallpaperapp.source.dao.FavoriteDao
-import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.DATABASE_NAME
+import com.frogobox.basewallpaperapp.BuildConfig
+import com.frogobox.basewallpaperapp.model.Favorite
+import com.frogobox.basewallpaperapp.source.dao.FavoriteDao
+import com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.DATABASE_NAME
 
 /**
  * Created by Faisal Amir
@@ -32,7 +30,6 @@ import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.DATAB
  */
 @Database(
     entities = [
-        (Wallpaper::class),
         (Favorite::class)
     ], version = 1
 )
@@ -40,7 +37,6 @@ import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.DATAB
 
 abstract class FrogoAppDatabase : RoomDatabase() {
 
-    abstract fun wallpaperDao(): WallpaperDao
     abstract fun favoriteScriptDao(): FavoriteDao
 
     companion object {

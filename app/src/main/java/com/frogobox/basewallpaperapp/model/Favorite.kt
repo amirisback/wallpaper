@@ -3,6 +3,9 @@ package  com.frogobox.basewallpaperapp.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.ATTR_ID
+import com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.ATTR_LINK_IMAGE
+import com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.ATTR_TABLE_ID
 import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.TABLE_NAME_FAVORITE
 
 /**
@@ -26,16 +29,13 @@ import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.RoomDatabase.TABLE
 data class Favorite(
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "table_id")
+    @ColumnInfo(name = ATTR_TABLE_ID)
     var table_id: Int = 0,
 
-    @ColumnInfo(name = "fashion_id")
-    var fashion_id: String? = "",
+    @ColumnInfo(name = ATTR_ID)
+    var id: Int = 0,
 
-    @ColumnInfo(name = "type")
-    var type: String? = "",
-
-    @ColumnInfo(name = "linkImage")
+    @ColumnInfo(name = ATTR_LINK_IMAGE)
     var linkImage: String? = ""
 
 )
