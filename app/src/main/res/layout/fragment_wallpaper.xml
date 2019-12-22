@@ -7,4 +7,4 @@
     android:clipToPadding="false"
     android:paddingTop="@dimen/dimen_big_16dp"
     android:paddingRight="@dimen/dimen_big_16dp"
-    tools:listitem="@layout/item_grid_fanart"/>
+    tools:listitem="@layout/item_grid_wallpaper"/>

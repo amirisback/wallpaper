@@ -28,7 +28,7 @@
 
     <item
         android:id="@+id/toolbar_menu_favorite"
-        android:icon="@drawable/ic_star_unfavorite"
+        android:icon="@drawable/ic_toolbar_favorite"
         android:title="@string/title_favorite"
         app:showAsAction="ifRoom" />
 </menu>

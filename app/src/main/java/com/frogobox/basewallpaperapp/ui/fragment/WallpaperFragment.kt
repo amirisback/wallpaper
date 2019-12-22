@@ -34,7 +34,6 @@ class WallpaperFragment : BaseFragment(), BaseViewListener<Wallpaper> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
-        setupShowAdsInterstitial()
     }
 
     private fun arrayFanArt(): MutableList<Wallpaper> {
@@ -49,7 +48,7 @@ class WallpaperFragment : BaseFragment(), BaseViewListener<Wallpaper> {
 
     private fun setupAdapter(): FanartViewAdapter {
         val adapter = FanartViewAdapter()
-        adapter.setupRequirement(this, arrayFanArt(), R.layout.item_grid_fanart)
+        adapter.setupRequirement(this, arrayFanArt(), R.layout.item_grid_wallpaper)
         return adapter
     }
 

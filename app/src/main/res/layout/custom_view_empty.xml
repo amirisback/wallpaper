@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/empty_view"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <ImageView
+        android:layout_width="@dimen/dimen_img_product_150dp"
+        android:layout_height="@dimen/dimen_img_product_150dp"
+        android:src="@drawable/ic_empty_view" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dimen_big_16dp"
+        android:text="There no favorite wallpaper"
+        android:textColor="@color/colorBaseBlack"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please add your favorite wallpaper"
+        android:textSize="@dimen/text_size_small_10sp" />
+
+</LinearLayout>

@@ -95,9 +95,9 @@ class FanartDetailActivity : BaseAdmobActivity(), SaveViewCallback,
 
     private fun setFavorite(state: Boolean) {
         if (state)
-            menuItem?.getItem(1)?.icon = getDrawable(R.drawable.ic_star_favorite)
+            menuItem?.getItem(1)?.icon = getDrawable(R.drawable.ic_toolbar_favorite)
         else
-            menuItem?.getItem(1)?.icon = getDrawable(R.drawable.ic_star_unfavorite)
+            menuItem?.getItem(1)?.icon = getDrawable(R.drawable.ic_toolbar_un_favorite)
     }
 
     private fun setupImageView(linkImage: String) {

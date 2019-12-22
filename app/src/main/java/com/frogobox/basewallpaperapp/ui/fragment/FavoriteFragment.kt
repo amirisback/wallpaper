@@ -17,6 +17,7 @@ import com.frogobox.basewallpaperapp.ui.activity.MainActivity
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
 import com.frogobox.basewallpaperapp.view.adapter.FavoriteViewAdapter
 import com.frogobox.basewallpaperapp.viewmodel.FavoriteViewModel
+import kotlinx.android.synthetic.main.custom_view_empty.*
 import kotlinx.android.synthetic.main.fragment_wallpaper.*
 
 /**
@@ -37,7 +38,6 @@ class FavoriteFragment : BaseFragment(), BaseViewListener<Favorite> {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupShowAdsInterstitial()
         getFavorite()
     }
 
@@ -56,12 +56,17 @@ class FavoriteFragment : BaseFragment(), BaseViewListener<Favorite> {
             favListLive.observe(viewLifecycleOwner, Observer {
                 setupRecyclerView(it)
             })
+
+            eventIsEmpty.observe(viewLifecycleOwner, Observer {
+                setupEventEmptyView(empty_view, it)
+            })
+
         }
     }
 
     private fun setupRecyclerView(data: List<Favorite>) {
         val adapter = FavoriteViewAdapter()
-        adapter.setupRequirement(this, data, R.layout.item_grid_fanart)
+        adapter.setupRequirement(this, data, R.layout.item_grid_wallpaper_fav)
         recycler_view.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recycler_view.adapter = adapter

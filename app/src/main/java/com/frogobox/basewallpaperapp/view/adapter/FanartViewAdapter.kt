@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import  com.frogobox.basewallpaperapp.base.view.BaseViewAdapter
 import  com.frogobox.basewallpaperapp.base.view.BaseViewHolder
 import com.frogobox.basewallpaperapp.model.Wallpaper
-import kotlinx.android.synthetic.main.item_grid_fanart.view.*
+import kotlinx.android.synthetic.main.item_grid_wallpaper.view.*
 
 /**
  * Created by Faisal Amir
