@@ -7,6 +7,8 @@ import com.frogobox.basewallpaperapp.R
 import com.frogobox.basewallpaperapp.base.admob.BaseAdmobActivity
 import com.frogobox.basewallpaperapp.ui.fragment.FavoriteFragment
 import com.frogobox.basewallpaperapp.ui.fragment.RootWallpaperFragment
+import com.frogobox.basewallpaperapp.viewmodel.FavoriteViewModel
+import com.frogobox.basewallpaperapp.viewmodel.WallpaperViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
@@ -19,6 +21,12 @@ class MainActivity : BaseAdmobActivity() {
         setupBottomNav(R.id.framelayout_main_container)
         setupFragment(savedInstanceState)
     }
+
+    fun obtainWallpaperViewModel(): WallpaperViewModel =
+        obtainViewModel(WallpaperViewModel::class.java)
+
+    fun obtainFavoriteViewModel(): FavoriteViewModel =
+        obtainViewModel(FavoriteViewModel::class.java)
 
     private fun setupFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
@@ -59,7 +67,7 @@ class MainActivity : BaseAdmobActivity() {
                 R.id.bottom_menu_favorite -> {
                     setupCustomTitleToolbar(R.string.title_favorite)
                     setupChildFragment(frameLayout, FavoriteFragment())
-                    setupShowAdsInterstitial()
+//                    setupShowAdsInterstitial()
                 }
 
             }

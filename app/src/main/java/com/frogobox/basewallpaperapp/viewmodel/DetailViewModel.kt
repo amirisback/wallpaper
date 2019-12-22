@@ -52,7 +52,7 @@ class DetailViewModel(
 
     fun deleteFavorite(tableId: Int, callback: DeleteViewCallback) {
         callback.onShowProgress()
-        if (repository.deleteRoomFavorite(tableId)) {
+        if (repository.deleteRoomFromWallpaperID(tableId)) {
             callback.onHideProgress()
             callback.onSuccesDelete()
             eventIsEmpty.postValue(true)

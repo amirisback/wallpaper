@@ -27,6 +27,9 @@
     <string name="title_favorite">Favorite</string>
     <string name="title_wallpaper">Wallpaper</string>
 
+    <string name="text_succes_add_favorite">Success add to favorite</string>
+    <string name="text_succes_delete_favorite">Success delete from favorite</string>
+
     <!-- ^^^ TEMPLATE CODE ^^^  -->
 
 </resources>

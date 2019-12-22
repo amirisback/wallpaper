@@ -103,10 +103,9 @@ class ConstHelper {
         const val BASE_EXTRA = BuildConfig.APPLICATION_ID
         const val EXTRA_OPTION = "$BASE_EXTRA.EXTRA_OPTION"
         const val EXTRA_FANART = "$BASE_EXTRA.EXTRA_FANART"
+        const val EXTRA_FAV_FANART = "$BASE_EXTRA.EXTRA_FAV_FANART"
+
         const val EXTRA_SONG = "$BASE_EXTRA.EXTRA_SONG"
-        const val EXTRA_FAVORITE_SCRIPT = "$BASE_EXTRA.EXTRA_FAVORITE_SCRIPT"
-        const val EXTRA_EXAMPLE_SCRIPT = "$BASE_EXTRA.EXTRA_EXAMPLE_SCRIPT"
-        const val EXTRA_CATEGORY = "$BASE_EXTRA.EXTRA_CATEGORY"
 
     }
 
@@ -160,6 +159,8 @@ class ConstHelper {
         const val BASE_PATH_RAW = "src/com/frogobox/raw"
         const val PATH_DATA_CSV = "/influencers$EXTENSION_CSV"
         const val PATH_RAW_CSV_DATA = BASE_PATH_RAW + PATH_DATA_CSV
+
+        const val TYPE_MAIN_WALLPAPER = 100
 
     }
 

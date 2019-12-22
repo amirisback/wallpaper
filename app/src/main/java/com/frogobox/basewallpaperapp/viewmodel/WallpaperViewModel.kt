@@ -2,7 +2,9 @@ package com.frogobox.basewallpaperapp.viewmodel
 
 import android.app.Application
 import com.frogobox.basewallpaperapp.base.util.BaseViewModel
+import com.frogobox.basewallpaperapp.model.Wallpaper
 import com.frogobox.basewallpaperapp.source.FrogoDataRepository
+import com.frogobox.basewallpaperapp.util.SingleLiveEvent
 
 /**
  * Created by Faisal Amir
@@ -27,5 +29,6 @@ class WallpaperViewModel (
 ) :
     BaseViewModel(context) {
 
+    var wallpaperListLive = SingleLiveEvent<List<Wallpaper>>()
 
 }
