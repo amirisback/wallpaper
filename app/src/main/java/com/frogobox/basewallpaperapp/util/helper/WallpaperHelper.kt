@@ -29,7 +29,7 @@ class WallpaperHelper {
 
     object Wallpaper {
 
-        fun setHomeWallpaper(context: Context, linkImage: String) {
+        fun setHomeWallpaper(context: Context, linkImage: String) : Boolean {
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
 
@@ -37,24 +37,27 @@ class WallpaperHelper {
             try {
                 val ins = URL(linkImage).openStream()
                 wallpaperManager.setStream(ins)
-
+                return true
             } catch (e: IOException) {
                 e.printStackTrace()
+                return false
             }
         }
 
-        @RequiresApi(Build.VERSION_CODES.N)
-        fun setLockScreenWallpaper(context: Context, linkImage: String) {
+        fun setLockScreenWallpaper(context: Context, linkImage: String) : Boolean{
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
 
             val wallpaperManager = WallpaperManager.getInstance(context)
             try {
                 val ins = URL(linkImage).openStream()
-                wallpaperManager.setStream(ins, null, true, WallpaperManager.FLAG_LOCK)
-
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    wallpaperManager.setStream(ins, null, true, WallpaperManager.FLAG_LOCK)
+                }
+                return true
             } catch (e: IOException) {
                 e.printStackTrace()
+                return false
             }
         }
 

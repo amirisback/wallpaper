@@ -25,7 +25,7 @@
         android:width="2dp"
         android:color="@color/colorPrimary" />
     <corners
-        android:radius="@dimen/dimen_medium_8dp"/>
+        android:radius="@dimen/dimen_big_16dp"/>
 
     <solid android:color="@color/colorPrimary"/>
 

@@ -30,6 +30,10 @@
     <string name="text_succes_add_favorite">Success add to favorite</string>
     <string name="text_succes_delete_favorite">Success delete from favorite</string>
 
+    <string name="text_succes_applied_home_screen">Home Screen Wallpaper Applied</string>
+    <string name="text_failed_applied_home_screen">Failed to Set Home Screen Wallpaper</string>
+
+
     <!-- ^^^ TEMPLATE CODE ^^^  -->
 
 </resources>

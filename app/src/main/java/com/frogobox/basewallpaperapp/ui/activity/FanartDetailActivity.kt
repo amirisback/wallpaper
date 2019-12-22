@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.frogobox.basewallpaperapp.R
@@ -14,6 +15,7 @@ import com.frogobox.basewallpaperapp.modular.callback.DeleteViewCallback
 import com.frogobox.basewallpaperapp.modular.callback.SaveViewCallback
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
+import com.frogobox.basewallpaperapp.util.helper.WallpaperHelper.Wallpaper.setHomeWallpaper
 import com.frogobox.basewallpaperapp.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.activity_fanart_detail.*
 import kotlinx.android.synthetic.main.ads_phone_tab_special_smart_banner.*
@@ -63,15 +65,30 @@ class FanartDetailActivity : BaseAdmobActivity(), SaveViewCallback,
         }
     }
 
+    private fun setupButtonWallpaper(linkImage: String) {
+        btn_set_wallpaper.setOnClickListener {
+            progress_circular.visibility = View.VISIBLE
+            if (setHomeWallpaper(this, linkImage)) {
+                progress_circular.visibility = View.GONE
+                showToast(resources.getString(R.string.text_succes_applied_home_screen))
+            } else {
+                progress_circular.visibility = View.GONE
+                showToast(resources.getString(R.string.text_failed_applied_home_screen))
+            }
+        }
+    }
+
 
     private fun setupExtraData() {
         stateExtra({
             extraWallpaper = baseGetExtraData(EXTRA_FANART)
             extraWallpaper.linkImage?.let { setupImageView(it) }
+            extraWallpaper.linkImage?.let { setupButtonWallpaper(it) }
             extraWallpaper.id.let { mViewModel.getFavorite(it) }
         }) {
             extraFavorite = baseGetExtraData(EXTRA_FAV_FANART)
             extraFavorite.linkImage?.let { setupImageView(it) }
+            extraFavorite.linkImage?.let { setupButtonWallpaper(it) }
             extraFavorite.id.let { mViewModel.getFavorite(it) }
         }
     }
