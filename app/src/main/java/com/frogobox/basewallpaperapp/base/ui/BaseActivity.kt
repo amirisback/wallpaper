@@ -11,9 +11,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import  com.frogobox.basewallpaperapp.R
 import  com.frogobox.basewallpaperapp.base.util.BaseHelper
 import  com.frogobox.basewallpaperapp.base.admob.BaseAdmobActivity
+import com.frogobox.basewallpaperapp.util.ViewModelFactory
 
 /**
  * Created by Faisal Amir
@@ -49,6 +52,10 @@ open class BaseActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
     }
+
+    fun <T : ViewModel> obtainViewModel(viewModelClass: Class<T>) =
+        ViewModelProvider(this, ViewModelFactory.getInstance(application)).get(viewModelClass)
+
 
     protected fun setupChildFragment(frameId: Int, fragment: Fragment) {
         supportFragmentManager.beginTransaction().apply {

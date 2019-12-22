@@ -5,6 +5,9 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import  com.frogobox.basewallpaperapp.source.FrogoDataRepository
+import com.frogobox.basewallpaperapp.viewmodel.DetailViewModel
+import com.frogobox.basewallpaperapp.viewmodel.FavoriteViewModel
+import com.frogobox.basewallpaperapp.viewmodel.WallpaperViewModel
 
 /**
  * Created by Faisal Amir
@@ -33,8 +36,14 @@ class ViewModelFactory private constructor(
         with(modelClass) {
             when {
 
-//                isAssignableFrom(CategoryScriptViewModel::class.java) ->
-//                    CategoryScriptViewModel(mApplication, frogoDataRepository)
+                isAssignableFrom(DetailViewModel::class.java) ->
+                    DetailViewModel(mApplication, frogoDataRepository)
+
+                isAssignableFrom(WallpaperViewModel::class.java) ->
+                    WallpaperViewModel(mApplication, frogoDataRepository)
+
+                isAssignableFrom(FavoriteViewModel::class.java) ->
+                    FavoriteViewModel(mApplication, frogoDataRepository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

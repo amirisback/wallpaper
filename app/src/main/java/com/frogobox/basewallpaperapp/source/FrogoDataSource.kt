@@ -38,5 +38,4 @@ interface FrogoDataSource : BaseDataSource {
 
     // Get
     interface GetRoomDataCallBack<T> : BaseDataSource.ResponseCallback<T>
-
 }
