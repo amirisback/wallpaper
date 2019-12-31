@@ -4,7 +4,7 @@ import android.app.WallpaperManager
 import android.content.Context
 import android.os.Build
 import android.os.StrictMode
-import androidx.annotation.RequiresApi
+import android.widget.Toast
 import java.io.IOException
 import java.net.URL
 
@@ -29,7 +29,7 @@ class WallpaperHelper {
 
     object Wallpaper {
 
-        fun setHomeWallpaper(context: Context, linkImage: String) : Boolean {
+        fun setHomeWallpaper(context: Context, linkImage: String): Boolean {
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
 
@@ -44,7 +44,7 @@ class WallpaperHelper {
             }
         }
 
-        fun setLockScreenWallpaper(context: Context, linkImage: String) : Boolean{
+        fun setLockScreenWallpaper(context: Context, linkImage: String): Boolean {
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
 
@@ -53,7 +53,24 @@ class WallpaperHelper {
                 val ins = URL(linkImage).openStream()
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     wallpaperManager.setStream(ins, null, true, WallpaperManager.FLAG_LOCK)
+                } else {
+                    Toast.makeText(
+                        context,
+                        "Lock screen walpaper not supported",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+                return true
+            } catch (e: IOException) {
+                e.printStackTrace()
+                return false
+            }
+        }
+
+        fun setHomeLockWallpaper(context: Context, linkImage: String): Boolean {
+            try {
+                setHomeWallpaper(context, linkImage)
+                setLockScreenWallpaper(context, linkImage)
                 return true
             } catch (e: IOException) {
                 e.printStackTrace()

@@ -15,7 +15,9 @@ import com.frogobox.basewallpaperapp.modular.callback.DeleteViewCallback
 import com.frogobox.basewallpaperapp.modular.callback.SaveViewCallback
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
+import com.frogobox.basewallpaperapp.util.helper.WallpaperHelper.Wallpaper.setHomeLockWallpaper
 import com.frogobox.basewallpaperapp.util.helper.WallpaperHelper.Wallpaper.setHomeWallpaper
+import com.frogobox.basewallpaperapp.util.helper.WallpaperHelper.Wallpaper.setLockScreenWallpaper
 import com.frogobox.basewallpaperapp.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.activity_fanart_detail.*
 import kotlinx.android.synthetic.main.ads_phone_tab_special_smart_banner.*
@@ -68,7 +70,7 @@ class FanartDetailActivity : BaseAdmobActivity(), SaveViewCallback,
     private fun setupButtonWallpaper(linkImage: String) {
         btn_set_wallpaper.setOnClickListener {
             progress_circular.visibility = View.VISIBLE
-            if (setHomeWallpaper(this, linkImage)) {
+            if (setHomeLockWallpaper(this, linkImage)) {
                 progress_circular.visibility = View.GONE
                 showToast(resources.getString(R.string.text_succes_applied_home_screen))
             } else {
