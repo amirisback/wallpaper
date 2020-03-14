@@ -86,7 +86,7 @@ Admob ID
 	
 
 # Screenshoot Apps
-
+<span align="center"><img width="200px" height="360px" src="docs/image/ss_apps.PNG"></span>
 
 # Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
