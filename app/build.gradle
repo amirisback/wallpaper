@@ -5,8 +5,11 @@ apply plugin: 'kotlin-kapt'
 
 android {
 
-// Declaration app name
+    // Declaration app name
     def nameApp = "Base Wallpaper"
+
+    // Declaration Topic Name
+    def topicWallpaper = '"One Piece"'
 
     // Declaration apk / aab name
     def nameAPK = nameApp.toLowerCase().replace(" ", "-")
@@ -40,6 +43,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Search for event by event name
+        buildConfigField("String", "TOPIC_WALLPAPER", topicWallpaper)
+
 
         // Declaration apps name debug mode
         def debugAttribute = " Development"

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.frogobox.basewallpaperapp.BuildConfig
 import com.frogobox.basewallpaperapp.R
 import com.frogobox.basewallpaperapp.base.ui.BaseFragment
 import com.frogobox.basewallpaperapp.base.view.BaseViewListener
@@ -36,7 +37,7 @@ class WallpaperFragment : BaseFragment(), BaseViewListener<Wallpaper> {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupConsumePixabayApi("One Piece")
+        setupConsumePixabayApi(BuildConfig.TOPIC_WALLPAPER)
     }
 
     private fun arrayFanArt(pixabayApi: ResponseImage): MutableList<Wallpaper> {
