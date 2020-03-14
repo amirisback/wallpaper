@@ -55,7 +55,7 @@ abstract class FrogoAppDatabase : RoomDatabase() {
             return if (BuildConfig.DEBUG) {
                 Room.databaseBuilder(
                     context.applicationContext,
-                    FrogoAppDatabase::class.java, DATABASE_NAME.toString()
+                    FrogoAppDatabase::class.java, DATABASE_NAME
                 )
                     .addMigrations(MIGRATION_2_3)
                     .fallbackToDestructiveMigration() // FOR DEVELOPMENT ONLY !!!!
@@ -63,7 +63,7 @@ abstract class FrogoAppDatabase : RoomDatabase() {
             } else {
                 Room.databaseBuilder(
                     context.applicationContext,
-                    FrogoAppDatabase::class.java, DATABASE_NAME.toString()
+                    FrogoAppDatabase::class.java, DATABASE_NAME
                 )
                     .addMigrations(MIGRATION_2_3)
                     .build()

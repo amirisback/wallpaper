@@ -60,7 +60,7 @@ class ConstHelper {
     }
 
     object RoomDatabase {
-        val DATABASE_NAME = { BuildConfig.DATABASE_NAME }
+        val DATABASE_NAME = BuildConfig.APPLICATION_ID.replace(".", "_") + ".db"
         const val BASE_TABLE_NAME = "table"
         const val TABLE_NAME_DATA = "wallpaper_$BASE_TABLE_NAME"
         const val TABLE_NAME_FAVORITE = "favorite_$TABLE_NAME_DATA"
