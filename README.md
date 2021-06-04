@@ -1,4 +1,4 @@
-## wallpaper-consume-pixabay By AmirIsBack
+## wallpaper-consume-pixabay
 Using Library https://github.com/amirisback/consumable-code-pixabay-api for fetching API, EASY TO RESKIN and Simple to Upload
 - v2.0.0 - Development
 - Stable Version
@@ -10,7 +10,7 @@ Using Library https://github.com/amirisback/consumable-code-pixabay-api for fetc
 |:----:|:----:|:----:|
 |<span align="center"><img width="200px" height="360px" src="docs/image/ss_1.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_2.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_3.png"></span> |
 
-# Version Release
+## Version Release
 This Is Latest Release
 
     $version_release = 2.0.0
