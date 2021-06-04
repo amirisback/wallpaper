@@ -1,30 +1,25 @@
-# wallpaper-consume-pixabay By AmirIsBack
-- v1.0.0 - Development
-- Stable Version
-
-# About This Project
-Wallpaper from https://pixabay.com/id
-
-# Special From This Project
+## wallpaper-consume-pixabay By AmirIsBack
 Using Library https://github.com/amirisback/consumable-code-pixabay-api for fetching API, EASY TO RESKIN and Simple to Upload
+- v2.0.0 - Development
+- Stable Version
+- Wallpaper from https://pixabay.com/id
 
-# Android Library Version (build.gradle)
-- ext.kotlin_version = '1.3.70'
-- classpath 'com.android.tools.build:gradle:3.6.1'
-- compileSdkVersion 29
-- buildToolsVersion "29.0.3"
-- minSdkVersion 21
+## Screen Shoot
+
+| UI 1 | UI 2 | UI 3 |
+|:----:|:----:|:----:|
+|<span align="center"><img width="200px" height="360px" src="docs/image/ss_1.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_2.png"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/ss_3.png"></span> |
 
 # Version Release
 This Is Latest Release
 
-    $version_release = 1.0.0
+    $version_release = 2.0.0
 
 What's New??
 
     * Easy To Reskin *
 
-# How To Use This Project
+## How To Use This Project
 <h3>Step 1. Open app/build.gradle</h3>
 
 App Name
@@ -85,10 +80,7 @@ Admob ID
     // [PROJECT FOLDER NAME/app/[COPY YOUT KEY STORE] .jks in here
 	
 
-# Screenshoot Apps
-<span align="center"><img width="200px" height="360px" src="docs/image/ss_apps.PNG"></span>
-
-# Colaborator
+## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
 
 - Mail To faisalamircs@gmail.com
@@ -102,7 +94,7 @@ Name Of Contribute
 
 Waiting for your contribute
 
-# Attention !!!
+## Attention !!!
 Please enjoy and don't forget fork and give a star
 - Don't Forget Follow My Github Account
 - If you like this library, please help me / you can donate to buy patreon services
