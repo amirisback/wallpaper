@@ -19,8 +19,10 @@ class FanartSourceActivity : BaseAdmobActivity() {
 
     private fun setupInfoCopyright() {
         val image = intent.getStringExtra(ConstHelper.Extra.EXTRA_FANART)
-        val link = image.split("/")
-        tv_base_url.text = link.get(0) + "//" + link.get(2)
+        val link = image?.split("/")
+        if (link != null) {
+            tv_base_url.text = link.get(0) + "//" + link.get(2)
+        }
         tv_source_link.text = image
     }
 }
