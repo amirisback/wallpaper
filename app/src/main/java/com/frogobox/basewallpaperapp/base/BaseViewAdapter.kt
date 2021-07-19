@@ -1,6 +1,5 @@
-package  com.frogobox.basewallpaperapp.base.view
+package  com.frogobox.basewallpaperapp.base
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup

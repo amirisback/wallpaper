@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.frogobox.basewallpaperapp.R
-import com.frogobox.basewallpaperapp.base.ui.BaseFragment
+import com.frogobox.basewallpaperapp.base.BaseFragment
 import com.frogobox.basewallpaperapp.util.helper.PagerHelper
 import kotlinx.android.synthetic.main.fragment_root_wallpaper.*
 

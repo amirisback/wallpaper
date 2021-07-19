@@ -1,11 +1,11 @@
-package  com.frogobox.basewallpaperapp.base.data
+package  com.frogobox.basewallpaperapp.base
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
  * PregnantFashsion
- * Copyright (C) 14/09/2019.
+ * Copyright (C) 18/08/2019.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -17,4 +17,7 @@ package  com.frogobox.basewallpaperapp.base.data
  *  com.frogobox.basewallpaperapp.base
  *
  */
-abstract class BaseDataRepository
+interface BaseViewListener<T> {
+    fun onItemClicked(data: T)
+    fun onItemLongClicked(data: T)
+}

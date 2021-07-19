@@ -1,17 +1,22 @@
 package  com.frogobox.basewallpaperapp.ui.activity
 
 import android.os.Bundle
-import  com.frogobox.basewallpaperapp.R
-import  com.frogobox.basewallpaperapp.base.admob.BaseAdmobActivity
+import com.frogobox.basewallpaperapp.base.BaseActivity
+import com.frogobox.basewallpaperapp.databinding.ActivityFanartSourceBinding
 import  com.frogobox.basewallpaperapp.util.helper.ConstHelper
 import kotlinx.android.synthetic.main.activity_fanart_source.*
 import kotlinx.android.synthetic.main.ads_phone_tab_special_smart_banner.*
 
-class FanartSourceActivity : BaseAdmobActivity() {
+class FanartSourceActivity : BaseActivity<ActivityFanartSourceBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fanart_source)
+    override fun setupViewBinding(): ActivityFanartSourceBinding {
+        return ActivityFanartSourceBinding.inflate(layoutInflater)
+    }
+
+    override fun setupViewModel() {
+    }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
         setupDetailActivity("")
         setupInfoCopyright()
         setupShowAdsBanner(ads_phone_tab_special_smart_banner)
@@ -25,4 +30,5 @@ class FanartSourceActivity : BaseAdmobActivity() {
         }
         tv_source_link.text = image
     }
+
 }

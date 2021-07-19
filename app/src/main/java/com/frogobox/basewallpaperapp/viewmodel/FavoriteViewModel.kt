@@ -1,7 +1,7 @@
 package com.frogobox.basewallpaperapp.viewmodel
 
 import android.app.Application
-import com.frogobox.basewallpaperapp.base.util.BaseViewModel
+import com.frogobox.basewallpaperapp.base.BaseViewModel
 import com.frogobox.basewallpaperapp.model.Favorite
 import com.frogobox.basewallpaperapp.source.FrogoDataRepository
 import com.frogobox.basewallpaperapp.source.FrogoDataSource

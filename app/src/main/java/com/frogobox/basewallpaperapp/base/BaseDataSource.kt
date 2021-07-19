@@ -1,4 +1,4 @@
-package  com.frogobox.basewallpaperapp.base.data
+package  com.frogobox.basewallpaperapp.base
 
 /**
  * Created by Faisal Amir

@@ -1,4 +1,4 @@
-package  com.frogobox.basewallpaperapp.base.ui
+package  com.frogobox.basewallpaperapp.base
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
@@ -13,9 +13,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewbinding.ViewBinding
+import com.frogobox.admob.ui.FrogoAdmobActivity
 import  com.frogobox.basewallpaperapp.R
-import  com.frogobox.basewallpaperapp.base.util.BaseHelper
-import  com.frogobox.basewallpaperapp.base.admob.BaseAdmobActivity
 import com.frogobox.basewallpaperapp.util.ViewModelFactory
 
 /**
@@ -35,10 +35,31 @@ import com.frogobox.basewallpaperapp.util.ViewModelFactory
  *  com.frogobox.basewallpaperapp.base
  *
  */
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<VB : ViewBinding> : FrogoAdmobActivity() {
+
+    protected lateinit var binding: VB
+    protected lateinit var mActivity: AppCompatActivity
+
+    abstract fun setupViewBinding(): VB
+
+    abstract fun setupViewModel()
+
+    abstract fun setupUI(savedInstanceState: Bundle?)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = setupViewBinding()
+        setContentView(binding.root)
+        setupViewModel()
+        setupUI(savedInstanceState)
+        setupAdmob()
+        mActivity = this
+    }
+
+    private fun setupAdmob() {
+        setupAdsPublisher(getString(R.string.admob_publisher_id))
+        setupAdsBanner(getString(R.string.admob_banner))
+        setupAdsInterstitial(getString(R.string.admob_interstitial))
     }
 
     protected fun setupCustomTitleToolbar(title: Int) {

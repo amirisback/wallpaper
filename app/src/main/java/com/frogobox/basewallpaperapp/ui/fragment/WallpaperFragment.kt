@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.frogobox.basewallpaperapp.R
-import com.frogobox.basewallpaperapp.base.ui.BaseFragment
-import com.frogobox.basewallpaperapp.base.view.BaseViewListener
+import com.frogobox.basewallpaperapp.base.BaseFragment
+import com.frogobox.basewallpaperapp.base.BaseViewListener
 import com.frogobox.basewallpaperapp.model.Wallpaper
 import com.frogobox.basewallpaperapp.ui.activity.FanartDetailActivity
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Const.TYPE_MAIN_WALLPAPER

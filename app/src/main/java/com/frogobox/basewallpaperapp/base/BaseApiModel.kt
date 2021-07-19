@@ -1,13 +1,13 @@
-package  com.frogobox.basewallpaperapp.base.util
+package  com.frogobox.basewallpaperapp.base
 
-import com.google.gson.Gson
+import com.google.gson.annotations.SerializedName
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
- * SpeechBooster
- * Copyright (C) 14/09/2019.
+ * PregnantFashsion
+ * Copyright (C) 21/08/2019.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -16,17 +16,12 @@ import com.google.gson.Gson
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.speechbooster.base
+ *  com.frogobox.basewallpaperapp.base
  *
  */
-open class BaseHelper {
-
-    fun <T> baseToJson(model: T) : String? {
-        return Gson().toJson(model)
-    }
-
-    inline fun <reified T> baseFromJson(word: String?) : T {
-        return Gson().fromJson<T>(word, T::class.java)
-    }
-
-}
+data class BaseApiModel<T>(
+    @SerializedName("code") val code: Int,
+    @SerializedName("message") val message: String,
+    @SerializedName("status") val status: String,
+    @SerializedName("data") val data: T? = null
+)

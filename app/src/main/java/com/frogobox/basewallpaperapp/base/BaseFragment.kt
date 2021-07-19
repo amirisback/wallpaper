@@ -1,13 +1,10 @@
-package  com.frogobox.basewallpaperapp.base.ui
+package  com.frogobox.basewallpaperapp.base
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import  com.frogobox.basewallpaperapp.base.admob.BaseAdmobActivity
-import  com.frogobox.basewallpaperapp.base.util.BaseHelper
-import  com.frogobox.basewallpaperapp.util.helper.AdmobHelper.Interstitial.showInterstitial
 
 /**
  * Created by Faisal Amir
@@ -28,11 +25,11 @@ import  com.frogobox.basewallpaperapp.util.helper.AdmobHelper.Interstitial.showI
  */
 open class BaseFragment : Fragment() {
 
-    lateinit var mBaseActivity: BaseAdmobActivity
+    lateinit var mActivity: BaseActivity<*>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBaseActivity = (activity as BaseAdmobActivity)
+        mActivity = (activity as BaseActivity<*>)
     }
 
     protected fun setupChildFragment(frameId: Int, fragment: Fragment) {
@@ -43,7 +40,7 @@ open class BaseFragment : Fragment() {
     }
 
     protected fun setupShowAdsInterstitial() {
-        showInterstitial(mBaseActivity.mInterstitialAd)
+        mActivity.setupShowAdsInterstitial()
     }
 
     fun <Model> baseNewInstance(argsKey: String, data: Model) {
@@ -61,7 +58,7 @@ open class BaseFragment : Fragment() {
     }
 
     protected fun checkArgument(argsKey: String): Boolean {
-        return arguments!!.containsKey(argsKey)
+        return requireArguments().containsKey(argsKey)
     }
 
     protected fun setupEventEmptyView(view: View, isEmpty: Boolean) {

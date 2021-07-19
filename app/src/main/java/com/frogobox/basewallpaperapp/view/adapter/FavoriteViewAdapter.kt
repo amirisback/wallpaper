@@ -3,10 +3,9 @@ package com.frogobox.basewallpaperapp.view.adapter
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.frogobox.basewallpaperapp.base.view.BaseViewAdapter
-import com.frogobox.basewallpaperapp.base.view.BaseViewHolder
+import com.frogobox.basewallpaperapp.base.BaseViewAdapter
+import com.frogobox.basewallpaperapp.base.BaseViewHolder
 import com.frogobox.basewallpaperapp.model.Favorite
-import com.frogobox.basewallpaperapp.model.Wallpaper
 import kotlinx.android.synthetic.main.item_grid_wallpaper.view.*
 
 /**

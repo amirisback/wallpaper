@@ -2,9 +2,8 @@ package  com.frogobox.basewallpaperapp.source.local
 
 import android.content.SharedPreferences
 import androidx.annotation.VisibleForTesting
-import  com.frogobox.basewallpaperapp.base.view.BaseCallback
+import  com.frogobox.basewallpaperapp.base.BaseCallback
 import  com.frogobox.basewallpaperapp.model.Favorite
-import  com.frogobox.basewallpaperapp.model.Wallpaper
 import  com.frogobox.basewallpaperapp.source.FrogoDataSource
 import  com.frogobox.basewallpaperapp.source.dao.FavoriteDao
 import  com.frogobox.basewallpaperapp.util.AppExecutors

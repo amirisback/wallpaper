@@ -1,11 +1,13 @@
-package  com.frogobox.basewallpaperapp.base.view
+package  com.frogobox.basewallpaperapp.base
+
+import com.google.gson.Gson
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
- * PregnantFashsion
- * Copyright (C) 02/09/2019.
+ * SpeechBooster
+ * Copyright (C) 14/09/2019.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -14,13 +16,17 @@ package  com.frogobox.basewallpaperapp.base.view
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.base
+ * com.frogobox.speechbooster.base
  *
  */
-interface BaseViewCallback {
-    fun onShowProgress()
-    fun onHideProgress()
-    fun onSuccesInsert()
-    fun onSuccesDelete()
-    fun onFailed(message: String)
+open class BaseHelper {
+
+    fun <T> baseToJson(model: T) : String? {
+        return Gson().toJson(model)
+    }
+
+    inline fun <reified T> baseFromJson(word: String?) : T {
+        return Gson().fromJson<T>(word, T::class.java)
+    }
+
 }

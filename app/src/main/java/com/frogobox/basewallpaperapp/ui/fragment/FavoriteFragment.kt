@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.frogobox.basewallpaperapp.R
-import com.frogobox.basewallpaperapp.base.ui.BaseFragment
-import com.frogobox.basewallpaperapp.base.view.BaseViewListener
+import com.frogobox.basewallpaperapp.base.BaseFragment
+import com.frogobox.basewallpaperapp.base.BaseViewListener
 import com.frogobox.basewallpaperapp.model.Favorite
 import com.frogobox.basewallpaperapp.ui.activity.FanartDetailActivity
 import com.frogobox.basewallpaperapp.ui.activity.MainActivity

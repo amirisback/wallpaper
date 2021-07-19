@@ -4,7 +4,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.frogobox.basewallpaperapp.R
-import com.frogobox.basewallpaperapp.base.admob.BaseAdmobActivity
+import com.frogobox.basewallpaperapp.base.BaseActivity
+import com.frogobox.basewallpaperapp.databinding.ActivityMainBinding
 import com.frogobox.basewallpaperapp.ui.fragment.FavoriteFragment
 import com.frogobox.basewallpaperapp.ui.fragment.RootWallpaperFragment
 import com.frogobox.basewallpaperapp.viewmodel.FavoriteViewModel
@@ -12,11 +13,16 @@ import com.frogobox.basewallpaperapp.viewmodel.WallpaperViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 
-class MainActivity : BaseAdmobActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun setupViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    override fun setupViewModel() {
+    }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
         setupToolbar()
         setupBottomNav(R.id.framelayout_main_container)
         setupFragment(savedInstanceState)

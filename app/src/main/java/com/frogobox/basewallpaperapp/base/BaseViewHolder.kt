@@ -1,4 +1,4 @@
-package  com.frogobox.basewallpaperapp.base.view
+package  com.frogobox.basewallpaperapp.base
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

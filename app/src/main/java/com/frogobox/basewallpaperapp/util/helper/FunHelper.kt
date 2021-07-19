@@ -9,7 +9,7 @@ import android.net.NetworkInfo
 import android.os.Environment
 import  com.frogobox.basewallpaperapp.BuildConfig
 import  com.frogobox.basewallpaperapp.R
-import  com.frogobox.basewallpaperapp.base.util.BaseHelper
+import  com.frogobox.basewallpaperapp.base.BaseHelper
 import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.Dir.DIR_NAME
 import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.Dir.VIDEO_FILE_NAME
 import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.Pref.PREF_NAME

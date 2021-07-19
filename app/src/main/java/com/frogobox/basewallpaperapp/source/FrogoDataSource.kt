@@ -1,8 +1,7 @@
 package  com.frogobox.basewallpaperapp.source
 
-import  com.frogobox.basewallpaperapp.base.data.BaseDataSource
+import  com.frogobox.basewallpaperapp.base.BaseDataSource
 import  com.frogobox.basewallpaperapp.model.Favorite
-import  com.frogobox.basewallpaperapp.model.Wallpaper
 
 /**
  * Created by Faisal Amir

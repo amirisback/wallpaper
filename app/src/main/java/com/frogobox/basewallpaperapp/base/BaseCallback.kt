@@ -1,6 +1,5 @@
-package  com.frogobox.basewallpaperapp.base.view
+package  com.frogobox.basewallpaperapp.base
 
-import  com.frogobox.basewallpaperapp.base.data.BaseApiModel
 import com.google.gson.Gson
 import io.reactivex.SingleObserver
 import io.reactivex.disposables.Disposable

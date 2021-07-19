@@ -9,8 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.frogobox.basewallpaperapp.BuildConfig
 import com.frogobox.basewallpaperapp.R
-import com.frogobox.basewallpaperapp.base.ui.BaseFragment
-import com.frogobox.basewallpaperapp.base.view.BaseViewListener
+import com.frogobox.basewallpaperapp.base.BaseFragment
+import com.frogobox.basewallpaperapp.base.BaseViewListener
 import com.frogobox.basewallpaperapp.model.Wallpaper
 import com.frogobox.basewallpaperapp.ui.activity.FanartDetailActivity
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Const.TYPE_MAIN_WALLPAPER
@@ -18,7 +18,8 @@ import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.basewallpaperapp.view.adapter.FanartViewAdapter
 import com.frogobox.frogopixabayapi.ConsumePixabayApi
 import com.frogobox.frogopixabayapi.callback.PixabayResultCallback
-import com.frogobox.frogopixabayapi.data.response.ResponseImage
+import com.frogobox.frogopixabayapi.data.model.PixabayImage
+import com.frogobox.frogopixabayapi.data.response.Response
 import com.frogobox.frogopixabayapi.util.PixabayConstant
 import kotlinx.android.synthetic.main.fragment_wallpaper.*
 
@@ -40,7 +41,7 @@ class WallpaperPixabayFragment : BaseFragment(), BaseViewListener<Wallpaper> {
         setupConsumePixabayApi(BuildConfig.TOPIC_WALLPAPER)
     }
 
-    private fun arrayFanArt(pixabayApi: ResponseImage): MutableList<Wallpaper> {
+    private fun arrayFanArt(pixabayApi: Response<PixabayImage>): MutableList<Wallpaper> {
         val arrayWallpaper = mutableListOf<Wallpaper>()
         for (i in pixabayApi.hits!!.indices) {
             arrayWallpaper.add(Wallpaper((TYPE_MAIN_WALLPAPER+i), pixabayApi.hits!![i].largeImageURL))
@@ -48,13 +49,13 @@ class WallpaperPixabayFragment : BaseFragment(), BaseViewListener<Wallpaper> {
         return arrayWallpaper
     }
 
-    private fun setupAdapter(pixabayApi: ResponseImage): FanartViewAdapter {
+    private fun setupAdapter(pixabayApi: Response<PixabayImage>): FanartViewAdapter {
         val adapter = FanartViewAdapter()
         adapter.setupRequirement(this, arrayFanArt(pixabayApi), R.layout.item_grid_wallpaper)
         return adapter
     }
 
-    private fun setupRecyclerView(pixabayApi: ResponseImage) {
+    private fun setupRecyclerView(pixabayApi: Response<PixabayImage>) {
         recycler_view.layoutManager =
             StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         recycler_view.adapter = setupAdapter(pixabayApi)
@@ -65,13 +66,33 @@ class WallpaperPixabayFragment : BaseFragment(), BaseViewListener<Wallpaper> {
         val consumePixabayApi = ConsumePixabayApi(PixabayConstant.SAMPLE_API_KEY)
         context?.let { consumePixabayApi.usingChuckInterceptor(it) }
 
-        consumePixabayApi.searchImage(query, object : PixabayResultCallback<ResponseImage>{
+        consumePixabayApi.searchImage(query,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            object : PixabayResultCallback<Response<PixabayImage>>{
             override fun failedResult(statusCode: Int, errorMessage: String?) {
 
             }
 
-            override fun getResultData(data: ResponseImage) {
+            override fun getResultData(data: Response<PixabayImage>) {
                 setupRecyclerView(data)
+            }
+
+            override fun onHideProgress() {
+            }
+
+            override fun onShowProgress() {
             }
         })
 

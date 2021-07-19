@@ -1,4 +1,8 @@
-package  com.frogobox.basewallpaperapp.base.view
+package  com.frogobox.basewallpaperapp.base
+
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import  com.frogobox.basewallpaperapp.util.SingleLiveEvent
 
 /**
  * Created by Faisal Amir
@@ -17,7 +21,7 @@ package  com.frogobox.basewallpaperapp.base.view
  *  com.frogobox.basewallpaperapp.base
  *
  */
-interface BaseViewListener<T> {
-    fun onItemClicked(data: T)
-    fun onItemLongClicked(data: T)
+open class BaseViewModel(application: Application) : AndroidViewModel(application) {
+    var eventShowProgress = SingleLiveEvent<Boolean>()
+    var eventIsEmpty = SingleLiveEvent<Boolean>()
 }

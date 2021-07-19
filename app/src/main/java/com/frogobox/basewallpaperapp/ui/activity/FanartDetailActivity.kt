@@ -8,7 +8,8 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.frogobox.basewallpaperapp.R
-import com.frogobox.basewallpaperapp.base.admob.BaseAdmobActivity
+import com.frogobox.basewallpaperapp.base.BaseActivity
+import com.frogobox.basewallpaperapp.databinding.ActivityFanartDetailBinding
 import com.frogobox.basewallpaperapp.model.Favorite
 import com.frogobox.basewallpaperapp.model.Wallpaper
 import com.frogobox.basewallpaperapp.modular.callback.DeleteViewCallback
@@ -16,14 +17,11 @@ import com.frogobox.basewallpaperapp.modular.callback.SaveViewCallback
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
 import com.frogobox.basewallpaperapp.util.helper.WallpaperHelper.Wallpaper.setHomeLockWallpaper
-import com.frogobox.basewallpaperapp.util.helper.WallpaperHelper.Wallpaper.setHomeWallpaper
-import com.frogobox.basewallpaperapp.util.helper.WallpaperHelper.Wallpaper.setLockScreenWallpaper
 import com.frogobox.basewallpaperapp.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.activity_fanart_detail.*
 import kotlinx.android.synthetic.main.ads_phone_tab_special_smart_banner.*
 
-class FanartDetailActivity : BaseAdmobActivity(), SaveViewCallback,
-    DeleteViewCallback {
+class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveViewCallback, DeleteViewCallback {
 
     private lateinit var mViewModel: DetailViewModel
     private lateinit var extraFavorite: Favorite
@@ -32,19 +30,11 @@ class FanartDetailActivity : BaseAdmobActivity(), SaveViewCallback,
     private var isFav = false
     private var menuItem: Menu? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_fanart_detail)
-        setupDetailActivity("")
-        setupShowAdsBanner(ads_phone_tab_special_smart_banner)
-        setupViewModel()
-        setupExtraData()
+    override fun setupViewBinding(): ActivityFanartDetailBinding {
+        return ActivityFanartDetailBinding.inflate(layoutInflater)
     }
 
-    private fun obtainDetailMovieViewModel(): DetailViewModel =
-        obtainViewModel(DetailViewModel::class.java)
-
-    private fun setupViewModel() {
+    override fun setupViewModel() {
         mViewModel = obtainDetailMovieViewModel().apply {
 
             favorite.observe(this@FanartDetailActivity, Observer {
@@ -58,6 +48,15 @@ class FanartDetailActivity : BaseAdmobActivity(), SaveViewCallback,
 
         }
     }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
+        setupDetailActivity("")
+        setupShowAdsBanner(ads_phone_tab_special_smart_banner)
+        setupExtraData()
+    }
+
+    private fun obtainDetailMovieViewModel(): DetailViewModel =
+        obtainViewModel(DetailViewModel::class.java)
 
     private fun stateExtra(listenerMovie: () -> Unit, listenerFavMovie: () -> Unit) {
         if (checkExtra(EXTRA_FANART)) {
@@ -182,5 +181,6 @@ class FanartDetailActivity : BaseAdmobActivity(), SaveViewCallback,
     }
 
     override fun onFailed(message: String) {}
+
 
 }
