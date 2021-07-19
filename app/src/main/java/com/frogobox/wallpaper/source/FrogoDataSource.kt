@@ -1,5 +1,7 @@
 package  com.frogobox.wallpaper.source
 
+import com.frogobox.frogopixabayapi.data.model.PixabayImage
+import com.frogobox.frogopixabayapi.data.response.Response
 import  com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.callback.ResponseCallback
 
@@ -22,6 +24,11 @@ import com.frogobox.wallpaper.source.callback.ResponseCallback
  */
 interface FrogoDataSource {
 
+    fun searchImage(
+        query: String,
+        callback: GetResponseDataCallback<Response<PixabayImage>>
+    )
+
     // Room Database -------------------------------------------------------------------------------
     fun saveRoomFavorite(data: Favorite): Boolean
 
@@ -37,4 +44,7 @@ interface FrogoDataSource {
 
     // Get
     interface GetRoomDataCallBack<T> : ResponseCallback<T>
+
+    // Get
+    interface GetResponseDataCallback<T> : ResponseCallback<T>
 }

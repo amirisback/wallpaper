@@ -21,7 +21,7 @@ import com.frogobox.wallpaper.util.helper.WallpaperHelper.Wallpaper.setHomeLockW
 class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveViewCallback,
     DeleteViewCallback {
 
-    private lateinit var mViewModel: DetailViewModel
+    private lateinit var mViewModel: FanartDetailViewModel
     private lateinit var extraFavorite: Favorite
     private lateinit var extraWallpaper: Wallpaper
 
@@ -53,8 +53,8 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
         setupExtraData()
     }
 
-    private fun obtainDetailMovieViewModel(): DetailViewModel =
-        obtainViewModel(DetailViewModel::class.java)
+    private fun obtainDetailMovieViewModel(): FanartDetailViewModel =
+        obtainViewModel(FanartDetailViewModel::class.java)
 
     private fun stateExtra(listenerMovie: () -> Unit, listenerFavMovie: () -> Unit) {
         if (checkExtra(EXTRA_FANART)) {

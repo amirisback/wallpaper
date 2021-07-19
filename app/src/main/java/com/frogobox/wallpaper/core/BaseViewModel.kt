@@ -24,4 +24,5 @@ import  com.frogobox.wallpaper.util.SingleLiveEvent
 open class BaseViewModel(application: Application) : AndroidViewModel(application) {
     var eventShowProgress = SingleLiveEvent<Boolean>()
     var eventIsEmpty = SingleLiveEvent<Boolean>()
+    var eventFailedMessage = SingleLiveEvent<String>()
 }

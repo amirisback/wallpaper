@@ -7,9 +7,9 @@ import com.frogobox.wallpaper.R
 import com.frogobox.wallpaper.core.BaseActivity
 import com.frogobox.wallpaper.databinding.ActivityMainBinding
 import com.frogobox.wallpaper.mvvm.favorite.FavoriteFragment
-import com.frogobox.wallpaper.mvvm.wallpaper.RootWallpaperFragment
 import com.frogobox.wallpaper.mvvm.favorite.FavoriteViewModel
-import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperViewModel
+import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperAssetViewModel
+import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperPixabayViewModel
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -26,8 +26,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         setupFragment(savedInstanceState)
     }
 
-    fun obtainWallpaperViewModel(): WallpaperViewModel =
-        obtainViewModel(WallpaperViewModel::class.java)
+    fun obtainWallpaperAssetViewModel(): WallpaperAssetViewModel =
+        obtainViewModel(WallpaperAssetViewModel::class.java)
+
+    fun obtainWallpaperPixabayViewModel(): WallpaperPixabayViewModel =
+        obtainViewModel(WallpaperPixabayViewModel::class.java)
 
     fun obtainFavoriteViewModel(): FavoriteViewModel =
         obtainViewModel(FavoriteViewModel::class.java)
@@ -66,7 +69,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 when (it.itemId) {
                     R.id.bottom_menu_wallpaper -> {
                         setupCustomTitleToolbar(R.string.title_wallpaper)
-                        setupChildFragment(frameLayout, RootWallpaperFragment())
+                        setupChildFragment(frameLayout, MainWallpaperFragment())
                     }
 
                     R.id.bottom_menu_favorite -> {

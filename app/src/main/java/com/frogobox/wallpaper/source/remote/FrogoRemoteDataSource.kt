@@ -1,6 +1,11 @@
 package  com.frogobox.wallpaper.source.remote
 
 import android.content.Context
+import com.frogobox.frogopixabayapi.ConsumePixabayApi
+import com.frogobox.frogopixabayapi.callback.PixabayResultCallback
+import com.frogobox.frogopixabayapi.data.model.PixabayImage
+import com.frogobox.frogopixabayapi.data.response.Response
+import com.frogobox.frogopixabayapi.util.PixabayConstant
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.FrogoDataSource
 import com.frogobox.wallpaper.util.helper.FunHelper.Func.noAction
@@ -23,6 +28,50 @@ import com.frogobox.wallpaper.util.helper.FunHelper.Func.noAction
  *
  */
 class FrogoRemoteDataSource(private val context: Context) : FrogoDataSource {
+
+    private val consumeApi = ConsumePixabayApi(PixabayConstant.SAMPLE_API_KEY)
+
+    override fun searchImage(
+        query: String,
+        callback: FrogoDataSource.GetResponseDataCallback<Response<PixabayImage>>
+    ) {
+        consumeApi.usingChuckInterceptor(context)
+        consumeApi.searchImage(
+            query,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            object : PixabayResultCallback<Response<PixabayImage>> {
+                override fun failedResult(statusCode: Int, errorMessage: String?) {
+                    callback.onFailed(statusCode, errorMessage)
+                }
+
+                override fun getResultData(data: Response<PixabayImage>) {
+                    callback.onSuccess(data)
+                }
+
+                override fun onHideProgress() {
+                    callback.onHideProgressDialog()
+                }
+
+                override fun onShowProgress() {
+                    callback.onShowProgressDialog()
+                }
+            }
+        )
+    }
+
+
     override fun saveRoomFavorite(data: Favorite): Boolean {
         return noAction()
     }

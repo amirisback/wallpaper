@@ -26,7 +26,7 @@ import com.frogobox.wallpaper.util.SingleLiveEvent
  * com.frogobox.wallpaper.viewmodel
  *
  */
-class DetailViewModel(
+class FanartDetailViewModel(
     private val context: Application,
     private val repository: FrogoDataRepository
 ) : BaseViewModel(context) {

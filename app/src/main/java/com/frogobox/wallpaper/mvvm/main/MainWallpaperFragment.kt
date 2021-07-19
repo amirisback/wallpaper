@@ -1,4 +1,4 @@
-package  com.frogobox.wallpaper.mvvm.wallpaper
+package  com.frogobox.wallpaper.mvvm.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.frogobox.wallpaper.core.BaseFragment
 import com.frogobox.wallpaper.databinding.FragmentRootWallpaperBinding
+import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperAssetFragment
+import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperPixabayFragment
 import com.frogobox.wallpaper.util.helper.PagerHelper
 
 /**
  * A simple [Fragment] subclass.
  */
-class RootWallpaperFragment : BaseFragment<FragmentRootWallpaperBinding>() {
+class MainWallpaperFragment : BaseFragment<FragmentRootWallpaperBinding>() {
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
@@ -31,7 +33,7 @@ class RootWallpaperFragment : BaseFragment<FragmentRootWallpaperBinding>() {
     private fun setupViewPager() {
         val pagerAdapter = PagerHelper(childFragmentManager)
         pagerAdapter.setupPagerFragment(WallpaperPixabayFragment(), "Pixabay")
-        pagerAdapter.setupPagerFragment(WallpaperFragment(), "Asset")
+        pagerAdapter.setupPagerFragment(WallpaperAssetFragment(), "Asset")
         binding?.apply {
             viewpager.adapter = pagerAdapter
             tablayout.setupWithViewPager(viewpager)

@@ -5,9 +5,10 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import  com.frogobox.wallpaper.source.FrogoDataRepository
-import com.frogobox.wallpaper.mvvm.detail.DetailViewModel
+import com.frogobox.wallpaper.mvvm.detail.FanartDetailViewModel
 import com.frogobox.wallpaper.mvvm.favorite.FavoriteViewModel
-import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperViewModel
+import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperAssetViewModel
+import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperPixabayViewModel
 
 /**
  * Created by Faisal Amir
@@ -36,14 +37,17 @@ class ViewModelFactory private constructor(
         with(modelClass) {
             when {
 
-                isAssignableFrom(DetailViewModel::class.java) ->
-                    DetailViewModel(mApplication, frogoDataRepository)
-
-                isAssignableFrom(WallpaperViewModel::class.java) ->
-                    WallpaperViewModel(mApplication, frogoDataRepository)
+                isAssignableFrom(FanartDetailViewModel::class.java) ->
+                    FanartDetailViewModel(mApplication, frogoDataRepository)
 
                 isAssignableFrom(FavoriteViewModel::class.java) ->
                     FavoriteViewModel(mApplication, frogoDataRepository)
+
+                isAssignableFrom(WallpaperPixabayViewModel::class.java) ->
+                    WallpaperPixabayViewModel(mApplication, frogoDataRepository)
+
+                isAssignableFrom(WallpaperAssetViewModel::class.java) ->
+                    WallpaperAssetViewModel(mApplication, frogoDataRepository)
 
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")

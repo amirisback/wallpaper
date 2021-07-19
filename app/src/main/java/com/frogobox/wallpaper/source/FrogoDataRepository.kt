@@ -1,6 +1,8 @@
 package  com.frogobox.wallpaper.source
 
 
+import com.frogobox.frogopixabayapi.data.model.PixabayImage
+import com.frogobox.frogopixabayapi.data.response.Response
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.local.FrogoLocalDataSource
 import com.frogobox.wallpaper.source.remote.FrogoRemoteDataSource
@@ -22,10 +24,17 @@ import com.frogobox.wallpaper.source.remote.FrogoRemoteDataSource
  *  com.frogobox.wallpaper.source
  *
  */
-open class FrogoDataRepository(
+class FrogoDataRepository(
     private val remoteDataSource: FrogoRemoteDataSource,
     private val localDataSource: FrogoLocalDataSource
 ) : FrogoDataSource {
+
+    override fun searchImage(
+        query: String,
+        callback: FrogoDataSource.GetResponseDataCallback<Response<PixabayImage>>
+    ) {
+        remoteDataSource.searchImage(query, callback)
+    }
 
     override fun saveRoomFavorite(data: Favorite): Boolean {
         return localDataSource.saveRoomFavorite(data)

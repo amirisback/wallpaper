@@ -2,6 +2,8 @@ package  com.frogobox.wallpaper.source.local
 
 import android.content.SharedPreferences
 import androidx.annotation.VisibleForTesting
+import com.frogobox.frogopixabayapi.data.model.PixabayImage
+import com.frogobox.frogopixabayapi.data.response.Response
 import  com.frogobox.wallpaper.core.BaseCallback
 import  com.frogobox.wallpaper.model.Favorite
 import  com.frogobox.wallpaper.source.FrogoDataSource
@@ -34,6 +36,12 @@ class FrogoLocalDataSource private constructor(
     private val sharedPreferences: SharedPreferences,
     private val favoriteDao: FavoriteDao
 ) : FrogoDataSource {
+
+    override fun searchImage(
+        query: String,
+        callback: FrogoDataSource.GetResponseDataCallback<Response<PixabayImage>>
+    ) {
+    }
 
     override fun saveRoomFavorite(data: Favorite): Boolean {
         appExecutors.diskIO.execute {
