@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.frogobox.wallpaper.BuildConfig
-import com.frogobox.wallpaper.base.BaseFragment
+import com.frogobox.wallpaper.core.BaseFragment
 import com.frogobox.wallpaper.model.Wallpaper
 import com.frogobox.wallpaper.mvvm.detail.FanartDetailActivity
 import com.frogobox.wallpaper.util.helper.ConstHelper.Const.TYPE_MAIN_WALLPAPER

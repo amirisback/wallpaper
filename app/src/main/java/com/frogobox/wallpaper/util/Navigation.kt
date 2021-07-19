@@ -28,7 +28,7 @@ import com.google.gson.Gson
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.view.navigation
+ *  com.frogobox.wallpaper.view.navigation
  *
  */
 

@@ -22,7 +22,7 @@ import  com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.TABLE_NAME_F
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.model
+ *  com.frogobox.wallpaper.model
  *
  */
 @Entity(tableName = TABLE_NAME_FAVORITE)

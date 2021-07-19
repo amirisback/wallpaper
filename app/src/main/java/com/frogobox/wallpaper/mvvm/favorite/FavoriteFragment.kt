@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.frogobox.recycler.core.IFrogoBindingAdapter
-import com.frogobox.wallpaper.base.BaseFragment
+import com.frogobox.wallpaper.core.BaseFragment
 import com.frogobox.wallpaper.databinding.FragmentFavoriteBinding
 import com.frogobox.wallpaper.databinding.ItemGridWallpaperFavBinding
 import com.frogobox.wallpaper.model.Favorite

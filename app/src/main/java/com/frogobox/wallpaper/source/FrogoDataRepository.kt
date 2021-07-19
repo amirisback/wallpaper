@@ -19,7 +19,7 @@ import com.frogobox.wallpaper.source.remote.FrogoRemoteDataSource
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.source
+ *  com.frogobox.wallpaper.source
  *
  */
 open class FrogoDataRepository(

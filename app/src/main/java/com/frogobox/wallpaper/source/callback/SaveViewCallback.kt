@@ -1,11 +1,11 @@
-package  com.frogobox.wallpaper.base
+package  com.frogobox.wallpaper.source.callback
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
- * PregnantFashsion
- * Copyright (C) 02/09/2019.
+ * mvvm
+ * Copyright (C) 16/11/2019.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -14,13 +14,12 @@ package  com.frogobox.wallpaper.base
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.base
+ *  com.frogobox.wallpaper.modular.callback
  *
  */
-interface BaseViewCallback {
+interface SaveViewCallback {
     fun onShowProgress()
     fun onHideProgress()
     fun onSuccesInsert()
-    fun onSuccesDelete()
     fun onFailed(message: String)
 }

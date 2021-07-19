@@ -8,12 +8,12 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.frogobox.wallpaper.R
-import com.frogobox.wallpaper.base.BaseActivity
+import com.frogobox.wallpaper.core.BaseActivity
 import com.frogobox.wallpaper.databinding.ActivityFanartDetailBinding
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.model.Wallpaper
-import com.frogobox.wallpaper.source.DeleteViewCallback
-import com.frogobox.wallpaper.source.SaveViewCallback
+import com.frogobox.wallpaper.source.callback.DeleteViewCallback
+import com.frogobox.wallpaper.source.callback.SaveViewCallback
 import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
 import com.frogobox.wallpaper.util.helper.WallpaperHelper.Wallpaper.setHomeLockWallpaper

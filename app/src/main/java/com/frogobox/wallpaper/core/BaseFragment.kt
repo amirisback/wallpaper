@@ -1,4 +1,4 @@
-package  com.frogobox.wallpaper.base
+package  com.frogobox.wallpaper.core
 
 import android.content.Intent
 import android.os.Bundle
@@ -24,7 +24,7 @@ import com.google.gson.Gson
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.activity
+ *  com.frogobox.wallpaper.activity
  *
  */
 abstract class BaseFragment<VB : ViewBinding> : Fragment() {

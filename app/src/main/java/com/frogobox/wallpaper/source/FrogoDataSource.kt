@@ -1,7 +1,7 @@
 package  com.frogobox.wallpaper.source
 
-import  com.frogobox.wallpaper.base.BaseDataSource
 import  com.frogobox.wallpaper.model.Favorite
+import com.frogobox.wallpaper.source.callback.ResponseCallback
 
 /**
  * Created by Faisal Amir
@@ -17,10 +17,10 @@ import  com.frogobox.wallpaper.model.Favorite
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.source
+ *  com.frogobox.wallpaper.source
  *
  */
-interface FrogoDataSource : BaseDataSource {
+interface FrogoDataSource {
 
     // Room Database -------------------------------------------------------------------------------
     fun saveRoomFavorite(data: Favorite): Boolean
@@ -30,11 +30,11 @@ interface FrogoDataSource : BaseDataSource {
 
     // Delete
     fun deleteRoomFavorite(tableId: Int): Boolean
-    fun deleteRoomFromWallpaperID(id: Int) : Boolean
+    fun deleteRoomFromWallpaperID(id: Int): Boolean
 
     // Nuke
     fun nukeRoomFavorite(): Boolean
 
     // Get
-    interface GetRoomDataCallBack<T> : BaseDataSource.ResponseCallback<T>
+    interface GetRoomDataCallBack<T> : ResponseCallback<T>
 }

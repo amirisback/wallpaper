@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.frogobox.wallpaper.base.BaseFragment
+import com.frogobox.wallpaper.core.BaseFragment
 import com.frogobox.wallpaper.databinding.FragmentRootWallpaperBinding
 import com.frogobox.wallpaper.util.helper.PagerHelper
 

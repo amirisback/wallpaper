@@ -14,7 +14,7 @@ package  com.frogobox.wallpaper.util
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.util
+ *  com.frogobox.wallpaper.util
  *
  */
 class Converters {

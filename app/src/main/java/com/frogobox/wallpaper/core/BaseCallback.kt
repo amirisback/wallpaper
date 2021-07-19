@@ -1,4 +1,4 @@
-package  com.frogobox.wallpaper.base
+package  com.frogobox.wallpaper.core
 
 import com.google.gson.Gson
 import io.reactivex.SingleObserver
@@ -21,7 +21,7 @@ import java.net.UnknownHostException
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.base
+ *  com.frogobox.wallpaper.base
  *
  */
 abstract class BaseCallback<M> : SingleObserver<M> {

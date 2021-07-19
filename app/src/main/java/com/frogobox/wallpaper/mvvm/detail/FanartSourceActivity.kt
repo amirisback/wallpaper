@@ -1,7 +1,7 @@
 package  com.frogobox.wallpaper.mvvm.detail
 
 import android.os.Bundle
-import com.frogobox.wallpaper.base.BaseActivity
+import com.frogobox.wallpaper.core.BaseActivity
 import com.frogobox.wallpaper.databinding.ActivityFanartSourceBinding
 import  com.frogobox.wallpaper.util.helper.ConstHelper
 

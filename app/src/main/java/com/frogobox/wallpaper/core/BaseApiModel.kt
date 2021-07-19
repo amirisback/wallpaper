@@ -1,11 +1,13 @@
-package  com.frogobox.wallpaper.source
+package  com.frogobox.wallpaper.core
+
+import com.google.gson.annotations.SerializedName
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
- * mvvm
- * Copyright (C) 16/11/2019.
+ * PregnantFashsion
+ * Copyright (C) 21/08/2019.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -14,12 +16,12 @@ package  com.frogobox.wallpaper.source
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.modular.callback
+ *  com.frogobox.wallpaper.base
  *
  */
-interface SaveViewCallback {
-    fun onShowProgress()
-    fun onHideProgress()
-    fun onSuccesInsert()
-    fun onFailed(message: String)
-}
+data class BaseApiModel<T>(
+    @SerializedName("code") val code: Int,
+    @SerializedName("message") val message: String,
+    @SerializedName("status") val status: String,
+    @SerializedName("data") val data: T? = null
+)

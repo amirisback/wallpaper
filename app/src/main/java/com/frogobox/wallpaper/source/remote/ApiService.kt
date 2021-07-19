@@ -1,4 +1,4 @@
-package  com.frogobox.wallpaper.base
+package  com.frogobox.wallpaper.source.remote
 
 /**
  * Created by Faisal Amir
@@ -14,16 +14,7 @@ package  com.frogobox.wallpaper.base
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.publicspeakingbooster.base
+ * com.frogobox.publicspeakingbooster.source.remote.network
  *
  */
-interface BaseDataSource {
-    interface ResponseCallback<T> {
-        fun onShowProgressDialog()
-        fun onHideProgressDialog()
-        fun onSuccess(data: T)
-        fun onEmpty()
-        fun onFinish()
-        fun onFailed(statusCode: Int, errorMessage: String? = "")
-    }
-}
+object ApiService {}

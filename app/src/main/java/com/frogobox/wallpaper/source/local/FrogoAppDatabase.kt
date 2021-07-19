@@ -25,7 +25,7 @@ import com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.DATABASE_NAME
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.source.local
+ *  com.frogobox.wallpaper.source.local
  *
  */
 @Database(

@@ -1,4 +1,4 @@
-package  com.frogobox.wallpaper.base
+package  com.frogobox.wallpaper.core
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -18,7 +18,7 @@ import  com.frogobox.wallpaper.util.SingleLiveEvent
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.base
+ *  com.frogobox.wallpaper.base
  *
  */
 open class BaseViewModel(application: Application) : AndroidViewModel(application) {

@@ -22,7 +22,7 @@ import  com.frogobox.wallpaper.source.remote.FrogoRemoteDataSource
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.util
+ *  com.frogobox.wallpaper.util
  *
  */
 object Injection {

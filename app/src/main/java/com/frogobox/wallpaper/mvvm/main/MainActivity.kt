@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import com.frogobox.wallpaper.R
-import com.frogobox.wallpaper.base.BaseActivity
+import com.frogobox.wallpaper.core.BaseActivity
 import com.frogobox.wallpaper.databinding.ActivityMainBinding
 import com.frogobox.wallpaper.mvvm.favorite.FavoriteFragment
 import com.frogobox.wallpaper.mvvm.wallpaper.RootWallpaperFragment

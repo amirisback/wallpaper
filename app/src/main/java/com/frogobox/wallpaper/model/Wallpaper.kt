@@ -14,7 +14,7 @@ package  com.frogobox.wallpaper.model
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.model
+ *  com.frogobox.wallpaper.model
  *
  */
 data class Wallpaper(

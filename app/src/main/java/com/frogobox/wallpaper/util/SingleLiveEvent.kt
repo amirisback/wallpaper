@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicBoolean
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.util
+ *  com.frogobox.wallpaper.util
  *
  */
 class SingleLiveEvent<T> : MutableLiveData<T>() {

@@ -23,7 +23,7 @@ import java.util.Collections;
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.util.helper
+ *  com.frogobox.wallpaper.util.helper
  */
 public class RawDataHelper {
 

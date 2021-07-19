@@ -14,7 +14,7 @@ package  com.frogobox.wallpaper.util.service
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.util.service
+ *  com.frogobox.wallpaper.util.service
  *
  */
 class Notification {}

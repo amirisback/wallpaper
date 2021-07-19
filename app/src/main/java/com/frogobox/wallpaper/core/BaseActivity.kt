@@ -1,4 +1,4 @@
-package  com.frogobox.wallpaper.base
+package  com.frogobox.wallpaper.core
 
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
@@ -33,7 +33,7 @@ import com.google.gson.Gson
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.base
+ *  com.frogobox.wallpaper.base
  *
  */
 abstract class BaseActivity<VB : ViewBinding> : FrogoAdmobActivity() {

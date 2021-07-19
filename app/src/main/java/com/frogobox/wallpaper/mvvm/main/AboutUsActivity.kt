@@ -1,7 +1,7 @@
 package  com.frogobox.wallpaper.mvvm.main
 
 import android.os.Bundle
-import com.frogobox.wallpaper.base.BaseActivity
+import com.frogobox.wallpaper.core.BaseActivity
 import com.frogobox.wallpaper.databinding.ActivityAboutUsBinding
 
 class AboutUsActivity : BaseActivity<ActivityAboutUsBinding>() {

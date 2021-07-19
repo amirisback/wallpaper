@@ -17,7 +17,7 @@ import java.util.concurrent.Executors
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.util
+ *  com.frogobox.wallpaper.util
  *
  */
 class DiskIOThreadExecutor: Executor {

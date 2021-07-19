@@ -23,7 +23,7 @@ import io.reactivex.Single
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.source.dao
+ *  com.frogobox.wallpaper.source.dao
  *
  */
 @Dao

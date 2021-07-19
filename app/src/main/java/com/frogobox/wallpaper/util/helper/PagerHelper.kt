@@ -18,7 +18,7 @@ import androidx.fragment.app.FragmentPagerAdapter
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.util.helper
+ *  com.frogobox.wallpaper.util.helper
  *
  */
 @Suppress("DEPRECATION")

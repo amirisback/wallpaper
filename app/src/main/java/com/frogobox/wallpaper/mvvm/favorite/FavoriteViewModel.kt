@@ -1,7 +1,7 @@
 package com.frogobox.wallpaper.mvvm.favorite
 
 import android.app.Application
-import com.frogobox.wallpaper.base.BaseViewModel
+import com.frogobox.wallpaper.core.BaseViewModel
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.FrogoDataRepository
 import com.frogobox.wallpaper.source.FrogoDataSource
@@ -21,7 +21,7 @@ import com.frogobox.wallpaper.util.SingleLiveEvent
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.basewallpaperapp.viewmodel
+ * com.frogobox.wallpaper.viewmodel
  *
  */
 class FavoriteViewModel(

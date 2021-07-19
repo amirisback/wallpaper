@@ -1,4 +1,4 @@
-package  com.frogobox.wallpaper.source
+package  com.frogobox.wallpaper.source.callback
 
 /**
  * Created by Faisal Amir
@@ -14,7 +14,7 @@ package  com.frogobox.wallpaper.source
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.modular.callback
+ *  com.frogobox.wallpaper.modular.callback
  *
  */
 interface DeleteViewCallback {

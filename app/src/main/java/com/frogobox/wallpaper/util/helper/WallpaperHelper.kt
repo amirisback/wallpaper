@@ -22,7 +22,7 @@ import java.net.URL
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.basewallpaperapp.util.helper
+ * com.frogobox.wallpaper.util.helper
  *
  */
 class WallpaperHelper {

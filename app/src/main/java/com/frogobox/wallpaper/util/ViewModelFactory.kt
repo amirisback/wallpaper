@@ -23,7 +23,7 @@ import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperViewModel
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.basewallpaperapp.util
+ *  com.frogobox.wallpaper.util
  *
  */
 class ViewModelFactory private constructor(
