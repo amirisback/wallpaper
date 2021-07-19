@@ -32,7 +32,8 @@ class RootWallpaperFragment : BaseFragment() {
 
     private fun setupViewPager() {
         val pagerAdapter = PagerHelper(childFragmentManager)
-        pagerAdapter.setupPagerFragment(WallpaperFragment(), resources.getString(R.string.title_wallpaper))
+        pagerAdapter.setupPagerFragment(WallpaperPixabayFragment(), "Pixabay")
+        pagerAdapter.setupPagerFragment(WallpaperFragment(), "Asset")
         viewpager.adapter = pagerAdapter
         tablayout.setupWithViewPager(viewpager)
     }
