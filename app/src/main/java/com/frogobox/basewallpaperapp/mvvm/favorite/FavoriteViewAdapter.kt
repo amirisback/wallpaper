@@ -1,4 +1,4 @@
-package com.frogobox.basewallpaperapp.view.adapter
+package com.frogobox.basewallpaperapp.mvvm.favorite
 
 import android.view.View
 import android.view.ViewGroup

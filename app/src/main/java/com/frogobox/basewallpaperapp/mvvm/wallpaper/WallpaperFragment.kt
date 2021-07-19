@@ -1,4 +1,4 @@
-package com.frogobox.basewallpaperapp.ui.fragment
+package com.frogobox.basewallpaperapp.mvvm.wallpaper
 
 
 import android.os.Bundle
@@ -11,11 +11,10 @@ import com.frogobox.basewallpaperapp.R
 import com.frogobox.basewallpaperapp.base.BaseFragment
 import com.frogobox.basewallpaperapp.base.BaseViewListener
 import com.frogobox.basewallpaperapp.model.Wallpaper
-import com.frogobox.basewallpaperapp.ui.activity.FanartDetailActivity
+import com.frogobox.basewallpaperapp.mvvm.detail.FanartDetailActivity
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Const.TYPE_MAIN_WALLPAPER
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.basewallpaperapp.util.helper.RawDataHelper
-import com.frogobox.basewallpaperapp.view.adapter.FanartViewAdapter
 import kotlinx.android.synthetic.main.fragment_wallpaper.*
 
 /**

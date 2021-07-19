@@ -1,4 +1,4 @@
-package  com.frogobox.basewallpaperapp.modular.callback
+package  com.frogobox.basewallpaperapp.source
 
 /**
  * Created by Faisal Amir
@@ -17,9 +17,9 @@ package  com.frogobox.basewallpaperapp.modular.callback
  *  com.frogobox.basewallpaperapp.modular.callback
  *
  */
-interface DeleteViewCallback {
+interface SaveViewCallback {
     fun onShowProgress()
     fun onHideProgress()
-    fun onSuccesDelete()
+    fun onSuccesInsert()
     fun onFailed(message: String)
 }

@@ -1,4 +1,4 @@
-package com.frogobox.basewallpaperapp.ui.activity
+package com.frogobox.basewallpaperapp.mvvm.main
 
 import android.os.Bundle
 import android.view.Menu
@@ -6,10 +6,10 @@ import android.view.MenuItem
 import com.frogobox.basewallpaperapp.R
 import com.frogobox.basewallpaperapp.base.BaseActivity
 import com.frogobox.basewallpaperapp.databinding.ActivityMainBinding
-import com.frogobox.basewallpaperapp.ui.fragment.FavoriteFragment
-import com.frogobox.basewallpaperapp.ui.fragment.RootWallpaperFragment
-import com.frogobox.basewallpaperapp.viewmodel.FavoriteViewModel
-import com.frogobox.basewallpaperapp.viewmodel.WallpaperViewModel
+import com.frogobox.basewallpaperapp.mvvm.favorite.FavoriteFragment
+import com.frogobox.basewallpaperapp.mvvm.wallpaper.RootWallpaperFragment
+import com.frogobox.basewallpaperapp.mvvm.favorite.FavoriteViewModel
+import com.frogobox.basewallpaperapp.mvvm.wallpaper.WallpaperViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 

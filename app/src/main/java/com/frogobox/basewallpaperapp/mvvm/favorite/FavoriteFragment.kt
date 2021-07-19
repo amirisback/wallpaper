@@ -1,4 +1,4 @@
-package  com.frogobox.basewallpaperapp.ui.fragment
+package  com.frogobox.basewallpaperapp.mvvm.favorite
 
 
 import android.os.Bundle
@@ -12,11 +12,9 @@ import com.frogobox.basewallpaperapp.R
 import com.frogobox.basewallpaperapp.base.BaseFragment
 import com.frogobox.basewallpaperapp.base.BaseViewListener
 import com.frogobox.basewallpaperapp.model.Favorite
-import com.frogobox.basewallpaperapp.ui.activity.FanartDetailActivity
-import com.frogobox.basewallpaperapp.ui.activity.MainActivity
+import com.frogobox.basewallpaperapp.mvvm.detail.FanartDetailActivity
+import com.frogobox.basewallpaperapp.mvvm.main.MainActivity
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
-import com.frogobox.basewallpaperapp.view.adapter.FavoriteViewAdapter
-import com.frogobox.basewallpaperapp.viewmodel.FavoriteViewModel
 import kotlinx.android.synthetic.main.custom_view_empty.*
 import kotlinx.android.synthetic.main.fragment_wallpaper.*
 

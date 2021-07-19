@@ -13,10 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activity.AboutUsActivity" />
-        <activity android:name=".ui.activity.FanartSourceActivity" />
-        <activity android:name=".ui.activity.FanartDetailActivity" />
-        <activity android:name=".ui.activity.MainActivity"
+        <activity android:name=".mvvm.main.AboutUsActivity" />
+        <activity android:name=".mvvm.detail.FanartSourceActivity" />
+        <activity android:name=".mvvm.detail.FanartDetailActivity" />
+        <activity android:name=".mvvm.main.MainActivity"
             android:theme="@style/AppThemeNoToolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

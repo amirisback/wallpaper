@@ -17,6 +17,7 @@ import androidx.viewbinding.ViewBinding
 import com.frogobox.admob.ui.FrogoAdmobActivity
 import  com.frogobox.basewallpaperapp.R
 import com.frogobox.basewallpaperapp.util.ViewModelFactory
+import com.google.gson.Gson
 
 /**
  * Created by Faisal Amir
@@ -94,15 +95,14 @@ abstract class BaseActivity<VB : ViewBinding> : FrogoAdmobActivity() {
         data: Model
     ) {
         val intent = Intent(this, ClassActivity::class.java)
-        val extraData = BaseHelper().baseToJson(data)
+        val extraData = Gson().toJson(data)
         intent.putExtra(extraKey, extraData)
         this.startActivity(intent)
     }
 
     protected inline fun <reified Model> baseGetExtraData(extraKey: String): Model {
         val extraIntent = intent.getStringExtra(extraKey)
-        val extraData = BaseHelper().baseFromJson<Model>(extraIntent)
-        return extraData
+        return Gson().fromJson(extraIntent, Model::class.java)
     }
 
     protected fun checkExtra(extraKey: String): Boolean {

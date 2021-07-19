@@ -1,13 +1,11 @@
-package  com.frogobox.basewallpaperapp.base
-
-import com.google.gson.Gson
+package  com.frogobox.basewallpaperapp.source
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
- * SpeechBooster
- * Copyright (C) 14/09/2019.
+ * mvvm
+ * Copyright (C) 16/11/2019.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -16,17 +14,12 @@ import com.google.gson.Gson
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.speechbooster.base
+ *  com.frogobox.basewallpaperapp.modular.callback
  *
  */
-open class BaseHelper {
-
-    fun <T> baseToJson(model: T) : String? {
-        return Gson().toJson(model)
-    }
-
-    inline fun <reified T> baseFromJson(word: String?) : T {
-        return Gson().fromJson<T>(word, T::class.java)
-    }
-
+interface DeleteViewCallback {
+    fun onShowProgress()
+    fun onHideProgress()
+    fun onSuccesDelete()
+    fun onFailed(message: String)
 }

@@ -1,4 +1,4 @@
-package  com.frogobox.basewallpaperapp.ui.activity
+package  com.frogobox.basewallpaperapp.mvvm.main
 
 import android.os.Bundle
 import com.frogobox.basewallpaperapp.base.BaseActivity

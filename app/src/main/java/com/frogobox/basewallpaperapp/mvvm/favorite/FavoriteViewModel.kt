@@ -1,4 +1,4 @@
-package com.frogobox.basewallpaperapp.viewmodel
+package com.frogobox.basewallpaperapp.mvvm.favorite
 
 import android.app.Application
 import com.frogobox.basewallpaperapp.base.BaseViewModel

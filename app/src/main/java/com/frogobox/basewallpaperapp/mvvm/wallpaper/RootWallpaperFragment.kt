@@ -1,4 +1,4 @@
-package  com.frogobox.basewallpaperapp.ui.fragment
+package  com.frogobox.basewallpaperapp.mvvm.wallpaper
 
 
 import android.os.Bundle

@@ -9,7 +9,6 @@ import android.net.NetworkInfo
 import android.os.Environment
 import  com.frogobox.basewallpaperapp.BuildConfig
 import  com.frogobox.basewallpaperapp.R
-import  com.frogobox.basewallpaperapp.base.BaseHelper
 import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.Dir.DIR_NAME
 import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.Dir.VIDEO_FILE_NAME
 import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.Pref.PREF_NAME
@@ -32,23 +31,11 @@ import  com.frogobox.basewallpaperapp.util.helper.ConstHelper.Pref.PREF_NAME
  * com.frogobox.publicspeakingbooster.helper
  *
  */
-class FunHelper{
-
-    object ConverterJson : BaseHelper() {
-
-        fun <T> toJson(model: T) : String? {
-            return baseToJson(model)
-        }
-
-        inline fun <reified T> fromJson(word: String?) : T {
-            return baseFromJson(word)
-        }
-
-    }
+class FunHelper {
 
     object Func {
 
-        fun createFolderPictureVideo(){
+        fun createFolderPictureVideo() {
             val videoFolder = Environment.getExternalStoragePublicDirectory(DIR_NAME)
             if (!videoFolder.exists()) {
                 videoFolder.mkdirs()
@@ -64,21 +51,31 @@ class FunHelper{
             }
         }
 
-        fun createDialogDefault(context: Context, title: String, message: String, listenerYes: ()-> Unit, listenerNo: ()-> Unit) {
+        fun createDialogDefault(
+            context: Context,
+            title: String,
+            message: String,
+            listenerYes: () -> Unit,
+            listenerNo: () -> Unit
+        ) {
             val dialogBuilder = AlertDialog.Builder(context)
             // set message of alert dialog
             dialogBuilder.setMessage(message)
                 // if the dialog is cancelable
                 .setCancelable(false)
                 // positive button text and action
-                .setPositiveButton(context.getText(R.string.dialog_button_yes), DialogInterface.OnClickListener {
-                        dialog, id -> listenerYes()
-                })
+                .setPositiveButton(
+                    context.getText(R.string.dialog_button_yes),
+                    DialogInterface.OnClickListener { dialog, id ->
+                        listenerYes()
+                    })
                 // negative button text and action
-                .setNegativeButton(context.getText(R.string.dialog_button_no), DialogInterface.OnClickListener {
-                        dialog, id -> dialog.cancel()
+                .setNegativeButton(
+                    context.getText(R.string.dialog_button_no),
+                    DialogInterface.OnClickListener { dialog, id ->
+                        dialog.cancel()
                         listenerNo()
-                })
+                    })
 
             // create dialog box
             val alert = dialogBuilder.create()
@@ -88,19 +85,20 @@ class FunHelper{
             alert.show()
         }
 
-        fun noAction() : Boolean {
+        fun noAction(): Boolean {
             return true
         }
 
         fun isNetworkAvailable(context: Context): Boolean? {
             var isConnected: Boolean? = false // Initial Value
-            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
             if (activeNetwork != null && activeNetwork.isConnected) isConnected = true
             return isConnected
         }
 
-        fun showVersion() : String {
+        fun showVersion(): String {
             return "Version " + BuildConfig.VERSION_NAME
         }
 
@@ -114,7 +112,11 @@ class FunHelper{
         }
 
         object Save {
-            fun savePrefFloat(sharedPreferences: SharedPreferences, constPref: String, data: Float) {
+            fun savePrefFloat(
+                sharedPreferences: SharedPreferences,
+                constPref: String,
+                data: Float
+            ) {
                 sharedPreferences.edit().putFloat(constPref, data).apply()
             }
 
@@ -122,11 +124,19 @@ class FunHelper{
                 sharedPreferences.edit().putInt(constPref, data).apply()
             }
 
-            fun savePrefString(sharedPreferences: SharedPreferences, constPref: String, data: String) {
+            fun savePrefString(
+                sharedPreferences: SharedPreferences,
+                constPref: String,
+                data: String
+            ) {
                 sharedPreferences.edit().putString(constPref, data).apply()
             }
 
-            fun savePrefBoolean(sharedPreferences: SharedPreferences, constPref: String, data: Boolean) {
+            fun savePrefBoolean(
+                sharedPreferences: SharedPreferences,
+                constPref: String,
+                data: Boolean
+            ) {
                 sharedPreferences.edit().putBoolean(constPref, data).apply()
             }
 

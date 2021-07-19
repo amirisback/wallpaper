@@ -1,4 +1,4 @@
-package  com.frogobox.basewallpaperapp.ui.activity
+package  com.frogobox.basewallpaperapp.mvvm.detail
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,16 +12,16 @@ import com.frogobox.basewallpaperapp.base.BaseActivity
 import com.frogobox.basewallpaperapp.databinding.ActivityFanartDetailBinding
 import com.frogobox.basewallpaperapp.model.Favorite
 import com.frogobox.basewallpaperapp.model.Wallpaper
-import com.frogobox.basewallpaperapp.modular.callback.DeleteViewCallback
-import com.frogobox.basewallpaperapp.modular.callback.SaveViewCallback
+import com.frogobox.basewallpaperapp.source.DeleteViewCallback
+import com.frogobox.basewallpaperapp.source.SaveViewCallback
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.basewallpaperapp.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
 import com.frogobox.basewallpaperapp.util.helper.WallpaperHelper.Wallpaper.setHomeLockWallpaper
-import com.frogobox.basewallpaperapp.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.activity_fanart_detail.*
 import kotlinx.android.synthetic.main.ads_phone_tab_special_smart_banner.*
 
-class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveViewCallback, DeleteViewCallback {
+class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveViewCallback,
+    DeleteViewCallback {
 
     private lateinit var mViewModel: DetailViewModel
     private lateinit var extraFavorite: Favorite

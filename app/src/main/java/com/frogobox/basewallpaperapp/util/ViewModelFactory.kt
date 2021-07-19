@@ -5,9 +5,9 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import  com.frogobox.basewallpaperapp.source.FrogoDataRepository
-import com.frogobox.basewallpaperapp.viewmodel.DetailViewModel
-import com.frogobox.basewallpaperapp.viewmodel.FavoriteViewModel
-import com.frogobox.basewallpaperapp.viewmodel.WallpaperViewModel
+import com.frogobox.basewallpaperapp.mvvm.detail.DetailViewModel
+import com.frogobox.basewallpaperapp.mvvm.favorite.FavoriteViewModel
+import com.frogobox.basewallpaperapp.mvvm.wallpaper.WallpaperViewModel
 
 /**
  * Created by Faisal Amir

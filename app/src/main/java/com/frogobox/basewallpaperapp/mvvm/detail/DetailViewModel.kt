@@ -1,10 +1,10 @@
-package com.frogobox.basewallpaperapp.viewmodel
+package com.frogobox.basewallpaperapp.mvvm.detail
 
 import android.app.Application
 import com.frogobox.basewallpaperapp.base.BaseViewModel
 import com.frogobox.basewallpaperapp.model.Favorite
-import com.frogobox.basewallpaperapp.modular.callback.DeleteViewCallback
-import com.frogobox.basewallpaperapp.modular.callback.SaveViewCallback
+import com.frogobox.basewallpaperapp.source.DeleteViewCallback
+import com.frogobox.basewallpaperapp.source.SaveViewCallback
 import com.frogobox.basewallpaperapp.source.FrogoDataRepository
 import com.frogobox.basewallpaperapp.source.FrogoDataSource
 import com.frogobox.basewallpaperapp.util.SingleLiveEvent
