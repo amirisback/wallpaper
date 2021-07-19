@@ -13,17 +13,17 @@ android {
 
     def appDomain = "com"
     def appDevConsole = "frogobox"
-    def appName = "basewallpaperapp"
+    def appName = "wallpaper"
 
     def projectApplicationId = "$appDomain.$appDevConsole.$appName"
     def projectVersionCode = (versionMajor * 100) + (versionMinor * 10) + (versionPatch * 1)
     def projectVersionName = "$versionMajor.$versionMinor.$versionPatch"
 
     // Declaration app name
-    def nameApp = "Base Wallpaper"
+    def nameApp = "Wallpaper"
 
     // Declaration Topic Name
-    def topicWallpaper = '"One Piece"'
+    def topicWallpaper = '"Nature"'
 
     // Declaration apk / aab name
     def nameAPK = nameApp.toLowerCase().replace(" ", "-")

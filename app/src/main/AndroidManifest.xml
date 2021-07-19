@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.frogobox.basewallpaperapp">
+    package="com.frogobox.wallpaper">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
@@ -13,10 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mvvm.main.AboutUsActivity" />
-        <activity android:name=".mvvm.detail.FanartSourceActivity" />
-        <activity android:name=".mvvm.detail.FanartDetailActivity" />
-        <activity android:name=".mvvm.main.MainActivity"
+        <activity android:name="com.frogobox.wallpaper.mvvm.main.AboutUsActivity" />
+        <activity android:name="com.frogobox.wallpaper.mvvm.detail.FanartSourceActivity" />
+        <activity android:name="com.frogobox.wallpaper.mvvm.detail.FanartDetailActivity" />
+        <activity android:name="com.frogobox.wallpaper.mvvm.main.MainActivity"
             android:theme="@style/AppThemeNoToolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
