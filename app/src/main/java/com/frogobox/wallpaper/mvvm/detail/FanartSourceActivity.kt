@@ -4,8 +4,6 @@ import android.os.Bundle
 import com.frogobox.wallpaper.base.BaseActivity
 import com.frogobox.wallpaper.databinding.ActivityFanartSourceBinding
 import  com.frogobox.wallpaper.util.helper.ConstHelper
-import kotlinx.android.synthetic.main.activity_fanart_source.*
-import kotlinx.android.synthetic.main.ads_phone_tab_special_smart_banner.*
 
 class FanartSourceActivity : BaseActivity<ActivityFanartSourceBinding>() {
 
@@ -19,16 +17,18 @@ class FanartSourceActivity : BaseActivity<ActivityFanartSourceBinding>() {
     override fun setupUI(savedInstanceState: Bundle?) {
         setupDetailActivity("")
         setupInfoCopyright()
-        setupShowAdsBanner(ads_phone_tab_special_smart_banner)
+        setupShowAdsBanner(binding.ads.adsPhoneTabSpecialSmartBanner)
     }
 
     private fun setupInfoCopyright() {
         val image = intent.getStringExtra(ConstHelper.Extra.EXTRA_FANART)
         val link = image?.split("/")
-        if (link != null) {
-            tv_base_url.text = link.get(0) + "//" + link.get(2)
+        binding.apply {
+            if (link != null) {
+                tvBaseUrl.text = link.get(0) + "//" + link.get(2)
+            }
+            tvSourceLink.text = image
         }
-        tv_source_link.text = image
     }
 
 }

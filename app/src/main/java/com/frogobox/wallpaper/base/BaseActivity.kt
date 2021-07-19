@@ -110,7 +110,7 @@ abstract class BaseActivity<VB : ViewBinding> : FrogoAdmobActivity() {
     }
 
     protected fun <Model> baseFragmentNewInstance(
-        fragment: BaseFragment,
+        fragment: BaseFragment<*>,
         argumentKey: String,
         extraDataResult: Model
     ) {

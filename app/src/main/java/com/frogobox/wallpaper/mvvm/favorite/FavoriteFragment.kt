@@ -1,41 +1,49 @@
 package  com.frogobox.wallpaper.mvvm.favorite
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.frogobox.wallpaper.R
+import com.bumptech.glide.Glide
+import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.wallpaper.base.BaseFragment
-import com.frogobox.wallpaper.base.BaseViewListener
+import com.frogobox.wallpaper.databinding.FragmentFavoriteBinding
+import com.frogobox.wallpaper.databinding.ItemGridWallpaperFavBinding
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.mvvm.detail.FanartDetailActivity
 import com.frogobox.wallpaper.mvvm.main.MainActivity
 import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
-import kotlinx.android.synthetic.main.custom_view_empty.*
-import kotlinx.android.synthetic.main.fragment_wallpaper.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class FavoriteFragment : BaseFragment(), BaseViewListener<Favorite> {
+class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
 
     private lateinit var mViewModel: FavoriteViewModel
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        setupViewModel()
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup
+    ): FragmentFavoriteBinding {
+        return FragmentFavoriteBinding.inflate(inflater, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun setupViewModel() {
+        mViewModel = (activity as MainActivity).obtainFavoriteViewModel().apply {
+
+            favListLive.observe(viewLifecycleOwner, Observer {
+                setupRV(it)
+            })
+
+            eventIsEmpty.observe(viewLifecycleOwner, Observer {
+                binding?.empty?.emptyView?.let { it1 -> setupEventEmptyView(it1, it) }
+            })
+
+        }
+    }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
         getFavorite()
     }
 
@@ -48,35 +56,36 @@ class FavoriteFragment : BaseFragment(), BaseViewListener<Favorite> {
         mViewModel.getFavorite()
     }
 
-    private fun setupViewModel() {
-        mViewModel = (activity as MainActivity).obtainFavoriteViewModel().apply {
+    private fun setupRV(data: List<Favorite>) {
 
-            favListLive.observe(viewLifecycleOwner, Observer {
-                setupRecyclerView(it)
-            })
+        val callback = object : IFrogoBindingAdapter<Favorite, ItemGridWallpaperFavBinding> {
+            override fun onItemClicked(data: Favorite) {
+                baseStartActivity<FanartDetailActivity, Favorite>(EXTRA_FAV_FANART, data)
+            }
 
-            eventIsEmpty.observe(viewLifecycleOwner, Observer {
-                setupEventEmptyView(empty_view, it)
-            })
+            override fun onItemLongClicked(data: Favorite) {
+            }
+
+            override fun setViewBinding(parent: ViewGroup): ItemGridWallpaperFavBinding {
+                return ItemGridWallpaperFavBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            }
+
+            override fun setupInitComponent(binding: ItemGridWallpaperFavBinding, data: Favorite) {
+                Glide.with(binding.root.context).load(data.linkImage).into(binding.ivPoster)
+            }
 
         }
-    }
 
-    private fun setupRecyclerView(data: List<Favorite>) {
-        val adapter = FavoriteViewAdapter()
-        adapter.setupRequirement(this, data, R.layout.item_grid_wallpaper_fav)
-        recycler_view.layoutManager =
-            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
-        recycler_view.adapter = adapter
-    }
-
-    override fun onItemClicked(data: Favorite) {
-        baseStartActivity<FanartDetailActivity, Favorite>(EXTRA_FAV_FANART, data)
-    }
-
-    override fun onItemLongClicked(data: Favorite) {
+        binding?.recyclerView?.injectorBinding<Favorite, ItemGridWallpaperFavBinding>()
+            ?.addData(data)
+            ?.addCallback(callback)
+            ?.createLayoutStaggeredGrid(2)
+            ?.build()
 
     }
-
 
 }

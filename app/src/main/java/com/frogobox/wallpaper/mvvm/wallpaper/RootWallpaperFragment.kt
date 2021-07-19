@@ -1,31 +1,29 @@
 package  com.frogobox.wallpaper.mvvm.wallpaper
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.frogobox.wallpaper.R
 import com.frogobox.wallpaper.base.BaseFragment
+import com.frogobox.wallpaper.databinding.FragmentRootWallpaperBinding
 import com.frogobox.wallpaper.util.helper.PagerHelper
-import kotlinx.android.synthetic.main.fragment_root_wallpaper.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class RootWallpaperFragment : BaseFragment() {
+class RootWallpaperFragment : BaseFragment<FragmentRootWallpaperBinding>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_root_wallpaper, container, false)
+    override fun setupViewBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup
+    ): FragmentRootWallpaperBinding {
+        return FragmentRootWallpaperBinding.inflate(inflater, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun setupViewModel() {
+    }
+
+    override fun setupUI(savedInstanceState: Bundle?) {
         setupShowAdsInterstitial()
         setupViewPager()
     }
@@ -34,7 +32,10 @@ class RootWallpaperFragment : BaseFragment() {
         val pagerAdapter = PagerHelper(childFragmentManager)
         pagerAdapter.setupPagerFragment(WallpaperPixabayFragment(), "Pixabay")
         pagerAdapter.setupPagerFragment(WallpaperFragment(), "Asset")
-        viewpager.adapter = pagerAdapter
-        tablayout.setupWithViewPager(viewpager)
+        binding?.apply {
+            viewpager.adapter = pagerAdapter
+            tablayout.setupWithViewPager(viewpager)
+        }
     }
+
 }

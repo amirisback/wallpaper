@@ -10,8 +10,6 @@ import com.frogobox.wallpaper.mvvm.favorite.FavoriteFragment
 import com.frogobox.wallpaper.mvvm.wallpaper.RootWallpaperFragment
 import com.frogobox.wallpaper.mvvm.favorite.FavoriteViewModel
 import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperViewModel
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.toolbar_main.*
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
 
@@ -36,12 +34,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     private fun setupFragment(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            bottom_nav_main_menu.selectedItemId = R.id.bottom_menu_wallpaper
+            binding.bottomNavMainMenu.selectedItemId = R.id.bottom_menu_wallpaper
         }
     }
 
     private fun setupToolbar() {
-        setSupportActionBar(toolbar_main)
+        setSupportActionBar(binding.toolbar.toolbarMain)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -60,25 +58,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupBottomNav(frameLayout: Int) {
-        bottom_nav_main_menu.clearAnimation()
-        bottom_nav_main_menu.itemIconTintList = null
-        bottom_nav_main_menu.setOnNavigationItemSelectedListener {
+        binding.bottomNavMainMenu.apply {
+            clearAnimation()
+            itemIconTintList = null
+            setOnNavigationItemSelectedListener {
 
-            when (it.itemId) {
-                R.id.bottom_menu_wallpaper -> {
-                    setupCustomTitleToolbar(R.string.title_wallpaper)
-                    setupChildFragment(frameLayout, RootWallpaperFragment())
+                when (it.itemId) {
+                    R.id.bottom_menu_wallpaper -> {
+                        setupCustomTitleToolbar(R.string.title_wallpaper)
+                        setupChildFragment(frameLayout, RootWallpaperFragment())
+                    }
+
+                    R.id.bottom_menu_favorite -> {
+                        setupCustomTitleToolbar(R.string.title_favorite)
+                        setupChildFragment(frameLayout, FavoriteFragment())
+                    }
+
                 }
 
-                R.id.bottom_menu_favorite -> {
-                    setupCustomTitleToolbar(R.string.title_favorite)
-                    setupChildFragment(frameLayout, FavoriteFragment())
-//                    setupShowAdsInterstitial()
-                }
-
+                true
             }
-
-            true
         }
 
     }

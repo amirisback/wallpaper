@@ -17,8 +17,6 @@ import com.frogobox.wallpaper.source.SaveViewCallback
 import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
 import com.frogobox.wallpaper.util.helper.WallpaperHelper.Wallpaper.setHomeLockWallpaper
-import kotlinx.android.synthetic.main.activity_fanart_detail.*
-import kotlinx.android.synthetic.main.ads_phone_tab_special_smart_banner.*
 
 class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveViewCallback,
     DeleteViewCallback {
@@ -51,7 +49,7 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
 
     override fun setupUI(savedInstanceState: Bundle?) {
         setupDetailActivity("")
-        setupShowAdsBanner(ads_phone_tab_special_smart_banner)
+        setupShowAdsBanner(binding.ads.adsPhoneTabSpecialSmartBanner)
         setupExtraData()
     }
 
@@ -67,14 +65,16 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
     }
 
     private fun setupButtonWallpaper(linkImage: String) {
-        btn_set_wallpaper.setOnClickListener {
-            progress_circular.visibility = View.VISIBLE
-            if (setHomeLockWallpaper(this, linkImage)) {
-                progress_circular.visibility = View.GONE
-                showToast(resources.getString(R.string.text_succes_applied_home_screen))
-            } else {
-                progress_circular.visibility = View.GONE
-                showToast(resources.getString(R.string.text_failed_applied_home_screen))
+        binding.apply {
+            btnSetWallpaper.setOnClickListener {
+                progressCircular.visibility = View.VISIBLE
+                if (setHomeLockWallpaper(this@FanartDetailActivity, linkImage)) {
+                    progressCircular.visibility = View.GONE
+                    showToast(resources.getString(R.string.text_succes_applied_home_screen))
+                } else {
+                    progressCircular.visibility = View.GONE
+                    showToast(resources.getString(R.string.text_failed_applied_home_screen))
+                }
             }
         }
     }
@@ -102,7 +102,7 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
     }
 
     private fun setupImageView(linkImage: String) {
-        Glide.with(this).load(linkImage).into(iv_poster)
+        Glide.with(this).load(linkImage).into(binding.ivPoster)
     }
 
     private fun setupIntentData() {
