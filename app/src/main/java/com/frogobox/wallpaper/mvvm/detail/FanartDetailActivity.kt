@@ -5,21 +5,18 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.frogobox.wallpaper.R
 import com.frogobox.wallpaper.core.BaseActivity
 import com.frogobox.wallpaper.databinding.ActivityFanartDetailBinding
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.model.Wallpaper
-import com.frogobox.wallpaper.source.callback.DeleteViewCallback
-import com.frogobox.wallpaper.source.callback.SaveViewCallback
-import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FANART
-import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
-import com.frogobox.wallpaper.util.helper.WallpaperHelper.setHomeLockWallpaper
+import com.frogobox.wallpaper.source.FrogoRoomListener
+import com.frogobox.wallpaper.util.ConstHelper.Extra.EXTRA_FANART
+import com.frogobox.wallpaper.util.ConstHelper.Extra.EXTRA_FAV_FANART
+import com.frogobox.wallpaper.util.WallpaperHelper.setHomeLockWallpaper
 
-class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveViewCallback,
-    DeleteViewCallback {
+class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>() {
 
     private lateinit var mViewModel: FanartDetailViewModel
     private lateinit var extraFavorite: Favorite
@@ -28,6 +25,20 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
     private var isFav = false
     private var menuItem: Menu? = null
 
+    private val saveRoomListener = object : FrogoRoomListener {
+        override fun onShowProgress() {}
+        override fun onHideProgress() {}
+        override fun onFailed(message: String) {}
+        override fun onSucces() { showToast(getString(R.string.text_succes_add_favorite)) }
+    }
+
+    private val deleteRoomListener = object : FrogoRoomListener {
+        override fun onShowProgress() {}
+        override fun onHideProgress() {}
+        override fun onFailed(message: String) {}
+        override fun onSucces() {showToast(getString(R.string.text_succes_delete_favorite))}
+    }
+
     override fun setupViewBinding(): ActivityFanartDetailBinding {
         return ActivityFanartDetailBinding.inflate(layoutInflater)
     }
@@ -35,11 +46,11 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
     override fun setupViewModel() {
         mViewModel = obtainDetailMovieViewModel().apply {
 
-            favorite.observe(this@FanartDetailActivity, Observer {
+            favorite.observe(this@FanartDetailActivity, {
 
             })
 
-            eventIsFavorite.observe(this@FanartDetailActivity, Observer {
+            eventIsFavorite.observe(this@FanartDetailActivity, {
                 setFavorite(it)
                 isFav = it
             })
@@ -125,10 +136,10 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
     private fun handleFavorite() {
         if (isFav) {
             stateExtra({
-                extraWallpaper.id.let { mViewModel.deleteFavorite(it, this) }
+                extraWallpaper.id.let { mViewModel.deleteFavorite(it, deleteRoomListener) }
                 extraWallpaper.id.let { mViewModel.getFavorite(it) }
             }) {
-                extraFavorite.id.let { mViewModel.deleteFavorite(it, this) }
+                extraFavorite.id.let { mViewModel.deleteFavorite(it, deleteRoomListener) }
                 extraFavorite.id.let { mViewModel.getFavorite(it) }
             }
         } else {
@@ -137,7 +148,7 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
                     Favorite(
                         id = extraWallpaper.id,
                         linkImage = extraWallpaper.linkImage
-                    ), this
+                    ), saveRoomListener
                 )
                 extraWallpaper.id.let { mViewModel.getFavorite(it) }
             }) {
@@ -145,7 +156,7 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
                     Favorite(
                         id = extraFavorite.id,
                         linkImage = extraFavorite.linkImage
-                    ), this
+                    ), saveRoomListener
                 )
                 extraFavorite.id.let { mViewModel.getFavorite(it) }
             }
@@ -167,20 +178,5 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveVi
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-    override fun onShowProgress() {}
-
-    override fun onHideProgress() {}
-
-    override fun onSuccesInsert() {
-        showToast(getString(R.string.text_succes_add_favorite))
-    }
-
-    override fun onSuccesDelete() {
-        showToast(getString(R.string.text_succes_delete_favorite))
-    }
-
-    override fun onFailed(message: String) {}
-
 
 }

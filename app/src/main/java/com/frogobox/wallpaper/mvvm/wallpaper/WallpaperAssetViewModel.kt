@@ -6,8 +6,8 @@ import com.frogobox.sdk.core.FrogoViewModel
 import com.frogobox.wallpaper.R
 import com.frogobox.wallpaper.model.Wallpaper
 import com.frogobox.wallpaper.source.FrogoDataRepository
-import com.frogobox.wallpaper.util.helper.ConstHelper
-import com.frogobox.wallpaper.util.helper.RawDataHelper
+import com.frogobox.wallpaper.util.ConstHelper
+import com.frogobox.wallpaper.util.RawDataHelper
 
 /*
  * Created by faisalamir on 19/07/21

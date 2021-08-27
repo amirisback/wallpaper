@@ -4,8 +4,8 @@ import android.content.SharedPreferences
 import androidx.annotation.VisibleForTesting
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.response.Response
+import com.frogobox.sdk.core.FrogoLocalResponse
 import com.frogobox.sdk.util.AppExecutors
-import  com.frogobox.wallpaper.core.BaseCallback
 import  com.frogobox.wallpaper.model.Favorite
 import  com.frogobox.wallpaper.source.FrogoDataSource
 import  com.frogobox.wallpaper.source.dao.FavoriteDao
@@ -55,7 +55,7 @@ class FrogoLocalDataSource private constructor(
             favoriteDao.getAllData()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : BaseCallback<List<Favorite>>() {
+                .subscribe(object : FrogoLocalResponse<List<Favorite>>() {
                     override fun onCallbackSucces(data: List<Favorite>) {
                         callback.onShowProgressDialog()
                         callback.onSuccess(data)

@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.frogobox.wallpaper.core.BaseFragment
 import com.frogobox.wallpaper.model.Wallpaper
 import com.frogobox.wallpaper.mvvm.detail.FanartDetailActivity
-import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FANART
+import com.frogobox.wallpaper.util.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.wallpaper.databinding.FragmentWallpaperBinding
 import com.frogobox.wallpaper.databinding.ItemGridWallpaperBinding

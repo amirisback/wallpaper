@@ -3,7 +3,6 @@ package  com.frogobox.wallpaper.source
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.response.Response
 import  com.frogobox.wallpaper.model.Favorite
-import com.frogobox.wallpaper.source.callback.ResponseCallback
 
 /**
  * Created by Faisal Amir
@@ -43,8 +42,8 @@ interface FrogoDataSource {
     fun nukeRoomFavorite(): Boolean
 
     // Get
-    interface GetRoomDataCallBack<T> : ResponseCallback<T>
+    interface GetRoomDataCallBack<T> : FrogoResponseCallback<T>
 
     // Get
-    interface GetResponseDataCallback<T> : ResponseCallback<T>
+    interface GetResponseDataCallback<T> : FrogoResponseCallback<T>
 }

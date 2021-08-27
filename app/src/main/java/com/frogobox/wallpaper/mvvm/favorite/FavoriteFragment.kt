@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.wallpaper.core.BaseFragment
@@ -13,7 +12,7 @@ import com.frogobox.wallpaper.databinding.ItemGridWallpaperFavBinding
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.mvvm.detail.FanartDetailActivity
 import com.frogobox.wallpaper.mvvm.main.MainActivity
-import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
+import com.frogobox.wallpaper.util.ConstHelper.Extra.EXTRA_FAV_FANART
 
 /**
  * A simple [Fragment] subclass.
@@ -32,11 +31,11 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
     override fun setupViewModel() {
         mViewModel = (activity as MainActivity).obtainFavoriteViewModel().apply {
 
-            favListLive.observe(viewLifecycleOwner, Observer {
+            favListLive.observe(viewLifecycleOwner, {
                 setupRV(it)
             })
 
-            eventEmptyData.observe(viewLifecycleOwner, Observer {
+            eventEmptyData.observe(viewLifecycleOwner, {
                 binding?.empty?.emptyView?.let { it1 -> setupEventEmptyView(it1, it) }
             })
 

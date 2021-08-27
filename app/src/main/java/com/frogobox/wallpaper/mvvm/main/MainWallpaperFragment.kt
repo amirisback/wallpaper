@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.frogobox.sdk.util.PagerHelper
 import com.frogobox.wallpaper.core.BaseFragment
 import com.frogobox.wallpaper.databinding.FragmentRootWallpaperBinding
 import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperAssetFragment
 import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperPixabayFragment
-import com.frogobox.wallpaper.util.helper.PagerHelper
 
 /**
  * A simple [Fragment] subclass.

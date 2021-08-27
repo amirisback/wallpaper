@@ -1,7 +1,5 @@
-package  com.frogobox.wallpaper.util.helper
+package  com.frogobox.wallpaper.util
 
-import android.Manifest
-import android.os.Environment
 import com.frogobox.wallpaper.BuildConfig
 
 /**

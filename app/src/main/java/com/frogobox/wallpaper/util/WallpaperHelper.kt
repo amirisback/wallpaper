@@ -1,4 +1,4 @@
-package com.frogobox.wallpaper.util.helper
+package com.frogobox.wallpaper.util
 
 import android.app.WallpaperManager
 import android.content.Context

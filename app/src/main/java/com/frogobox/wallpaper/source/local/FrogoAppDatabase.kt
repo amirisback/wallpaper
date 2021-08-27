@@ -9,7 +9,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.frogobox.wallpaper.BuildConfig
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.dao.FavoriteDao
-import com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.DATABASE_NAME
+import com.frogobox.wallpaper.util.ConstHelper.RoomDatabase.DATABASE_NAME
 
 /**
  * Created by Faisal Amir

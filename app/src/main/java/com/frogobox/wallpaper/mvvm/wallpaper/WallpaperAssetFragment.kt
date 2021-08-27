@@ -12,7 +12,7 @@ import com.frogobox.wallpaper.databinding.ItemGridWallpaperBinding
 import com.frogobox.wallpaper.model.Wallpaper
 import com.frogobox.wallpaper.mvvm.detail.FanartDetailActivity
 import com.frogobox.wallpaper.mvvm.main.MainActivity
-import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FANART
+import com.frogobox.wallpaper.util.ConstHelper.Extra.EXTRA_FANART
 
 /**
  * A simple [Fragment] subclass.

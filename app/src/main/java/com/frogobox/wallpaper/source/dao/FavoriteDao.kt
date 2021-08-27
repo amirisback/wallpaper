@@ -4,9 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import  com.frogobox.wallpaper.model.Favorite
-import com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.ATTR_ID
-import com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.ATTR_TABLE_ID
-import  com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.TABLE_NAME_FAVORITE
+import com.frogobox.wallpaper.util.ConstHelper.RoomDatabase.ATTR_ID
+import com.frogobox.wallpaper.util.ConstHelper.RoomDatabase.ATTR_TABLE_ID
+import  com.frogobox.wallpaper.util.ConstHelper.RoomDatabase.TABLE_NAME_FAVORITE
 import io.reactivex.Single
 
 /**

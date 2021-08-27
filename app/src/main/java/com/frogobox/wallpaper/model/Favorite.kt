@@ -3,10 +3,10 @@ package  com.frogobox.wallpaper.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.ATTR_ID
-import com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.ATTR_LINK_IMAGE
-import com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.ATTR_TABLE_ID
-import  com.frogobox.wallpaper.util.helper.ConstHelper.RoomDatabase.TABLE_NAME_FAVORITE
+import com.frogobox.wallpaper.util.ConstHelper.RoomDatabase.ATTR_ID
+import com.frogobox.wallpaper.util.ConstHelper.RoomDatabase.ATTR_LINK_IMAGE
+import com.frogobox.wallpaper.util.ConstHelper.RoomDatabase.ATTR_TABLE_ID
+import  com.frogobox.wallpaper.util.ConstHelper.RoomDatabase.TABLE_NAME_FAVORITE
 
 /**
  * Created by Faisal Amir

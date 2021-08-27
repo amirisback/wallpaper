@@ -6,9 +6,9 @@ import com.frogobox.api.pixabay.ConsumePixabayApi
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.response.Response
 import com.frogobox.api.pixabay.util.PixabayUrl
+import com.frogobox.sdk.core.FrogoFunc.noAction
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.FrogoDataSource
-import com.frogobox.wallpaper.util.helper.FunHelper.Func.noAction
 
 /**
  * Created by Faisal Amir

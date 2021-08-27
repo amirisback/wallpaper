@@ -4,8 +4,7 @@ import android.app.Application
 import com.frogobox.sdk.core.FrogoLiveEvent
 import com.frogobox.sdk.core.FrogoViewModel
 import com.frogobox.wallpaper.model.Favorite
-import com.frogobox.wallpaper.source.callback.DeleteViewCallback
-import com.frogobox.wallpaper.source.callback.SaveViewCallback
+import com.frogobox.wallpaper.source.FrogoRoomListener
 import com.frogobox.wallpaper.source.FrogoDataRepository
 import com.frogobox.wallpaper.source.FrogoDataSource
 
@@ -36,12 +35,12 @@ class FanartDetailViewModel(
 
     fun saveFavorite(
         data: Favorite,
-        callback: SaveViewCallback
+        callback: FrogoRoomListener
     ) {
         callback.onShowProgress()
         if (repository.saveRoomFavorite(data)) {
             callback.onHideProgress()
-            callback.onSuccesInsert()
+            callback.onSucces()
             eventEmptyData.postValue(false)
             eventIsFavorite.postValue(true)
         } else {
@@ -50,11 +49,11 @@ class FanartDetailViewModel(
         }
     }
 
-    fun deleteFavorite(tableId: Int, callback: DeleteViewCallback) {
+    fun deleteFavorite(tableId: Int, callback: FrogoRoomListener) {
         callback.onShowProgress()
         if (repository.deleteRoomFromWallpaperID(tableId)) {
             callback.onHideProgress()
-            callback.onSuccesDelete()
+            callback.onSucces()
             eventEmptyData.postValue(true)
             eventIsFavorite.postValue(false)
         } else {

@@ -8,7 +8,7 @@ import com.frogobox.sdk.core.FrogoViewModel
 import com.frogobox.wallpaper.model.Wallpaper
 import com.frogobox.wallpaper.source.FrogoDataRepository
 import com.frogobox.wallpaper.source.FrogoDataSource
-import com.frogobox.wallpaper.util.helper.ConstHelper
+import com.frogobox.wallpaper.util.ConstHelper
 
 /**
  * Created by Faisal Amir

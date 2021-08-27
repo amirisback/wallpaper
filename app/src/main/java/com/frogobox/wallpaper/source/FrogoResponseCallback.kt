@@ -1,11 +1,11 @@
-package  com.frogobox.wallpaper.source.callback
+package  com.frogobox.wallpaper.source
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
- * mvvm
- * Copyright (C) 16/11/2019.
+ * PublicSpeakingBooster
+ * Copyright (C) 16/08/2019.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -14,12 +14,14 @@ package  com.frogobox.wallpaper.source.callback
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- *  com.frogobox.wallpaper.modular.callback
+ * com.frogobox.publicspeakingbooster.base
  *
  */
-interface DeleteViewCallback {
-    fun onShowProgress()
-    fun onHideProgress()
-    fun onSuccesDelete()
-    fun onFailed(message: String)
+interface FrogoResponseCallback<T> {
+    fun onShowProgressDialog()
+    fun onHideProgressDialog()
+    fun onSuccess(data: T)
+    fun onEmpty()
+    fun onFinish()
+    fun onFailed(statusCode: Int, errorMessage: String? = "")
 }
