@@ -36,7 +36,7 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
                 setupRV(it)
             })
 
-            eventIsEmpty.observe(viewLifecycleOwner, Observer {
+            eventEmptyData.observe(viewLifecycleOwner, Observer {
                 binding?.empty?.emptyView?.let { it1 -> setupEventEmptyView(it1, it) }
             })
 

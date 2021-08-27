@@ -1,11 +1,11 @@
 package com.frogobox.wallpaper.mvvm.favorite
 
 import android.app.Application
-import com.frogobox.wallpaper.core.BaseViewModel
+import com.frogobox.sdk.core.FrogoLiveEvent
+import com.frogobox.sdk.core.FrogoViewModel
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.FrogoDataRepository
 import com.frogobox.wallpaper.source.FrogoDataSource
-import com.frogobox.wallpaper.util.SingleLiveEvent
 
 /**
  * Created by Faisal Amir
@@ -28,9 +28,9 @@ class FavoriteViewModel(
     private val context: Application,
     private val repository: FrogoDataRepository
 ) :
-    BaseViewModel(context) {
+    FrogoViewModel(context) {
 
-    var favListLive = SingleLiveEvent<List<Favorite>>()
+    var favListLive = FrogoLiveEvent<List<Favorite>>()
 
     fun getFavorite() {
         repository.getRoomFavorite(object :
@@ -44,7 +44,7 @@ class FavoriteViewModel(
             }
 
             override fun onSuccess(data: List<Favorite>) {
-                eventIsEmpty.postValue(false)
+                eventEmptyData.postValue(false)
                 favListLive.postValue(data)
             }
 
@@ -53,7 +53,7 @@ class FavoriteViewModel(
             }
 
             override fun onEmpty() {
-                eventIsEmpty.postValue(true)
+                eventEmptyData.postValue(true)
             }
 
             override fun onFailed(statusCode: Int, errorMessage: String?) {

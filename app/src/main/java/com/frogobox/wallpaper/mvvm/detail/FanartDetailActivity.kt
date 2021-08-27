@@ -16,7 +16,7 @@ import com.frogobox.wallpaper.source.callback.DeleteViewCallback
 import com.frogobox.wallpaper.source.callback.SaveViewCallback
 import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.wallpaper.util.helper.ConstHelper.Extra.EXTRA_FAV_FANART
-import com.frogobox.wallpaper.util.helper.WallpaperHelper.Wallpaper.setHomeLockWallpaper
+import com.frogobox.wallpaper.util.helper.WallpaperHelper.setHomeLockWallpaper
 
 class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>(), SaveViewCallback,
     DeleteViewCallback {

@@ -1,13 +1,13 @@
 package com.frogobox.wallpaper.mvvm.detail
 
 import android.app.Application
-import com.frogobox.wallpaper.core.BaseViewModel
+import com.frogobox.sdk.core.FrogoLiveEvent
+import com.frogobox.sdk.core.FrogoViewModel
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.callback.DeleteViewCallback
 import com.frogobox.wallpaper.source.callback.SaveViewCallback
 import com.frogobox.wallpaper.source.FrogoDataRepository
 import com.frogobox.wallpaper.source.FrogoDataSource
-import com.frogobox.wallpaper.util.SingleLiveEvent
 
 /**
  * Created by Faisal Amir
@@ -29,10 +29,10 @@ import com.frogobox.wallpaper.util.SingleLiveEvent
 class FanartDetailViewModel(
     private val context: Application,
     private val repository: FrogoDataRepository
-) : BaseViewModel(context) {
+) : FrogoViewModel(context) {
 
-    var favorite = SingleLiveEvent<Favorite>()
-    var eventIsFavorite = SingleLiveEvent<Boolean>()
+    var favorite = FrogoLiveEvent<Favorite>()
+    var eventIsFavorite = FrogoLiveEvent<Boolean>()
 
     fun saveFavorite(
         data: Favorite,
@@ -42,7 +42,7 @@ class FanartDetailViewModel(
         if (repository.saveRoomFavorite(data)) {
             callback.onHideProgress()
             callback.onSuccesInsert()
-            eventIsEmpty.postValue(false)
+            eventEmptyData.postValue(false)
             eventIsFavorite.postValue(true)
         } else {
             callback.onHideProgress()
@@ -55,7 +55,7 @@ class FanartDetailViewModel(
         if (repository.deleteRoomFromWallpaperID(tableId)) {
             callback.onHideProgress()
             callback.onSuccesDelete()
-            eventIsEmpty.postValue(true)
+            eventEmptyData.postValue(true)
             eventIsFavorite.postValue(false)
         } else {
             callback.onHideProgress()
@@ -82,13 +82,13 @@ class FanartDetailViewModel(
 
                 for (i in tempFavoriteList.indices) {
                     if (tempFavoriteList[i].id == id) {
-                        eventIsEmpty.postValue(false)
+                        eventEmptyData.postValue(false)
                         eventIsFavorite.postValue(true)
                         favorite.postValue(tempFavoriteList[i])
                         break
                     } else {
                         eventIsFavorite.postValue(false)
-                        eventIsEmpty.postValue(true)
+                        eventEmptyData.postValue(true)
                     }
                 }
             }
@@ -96,7 +96,7 @@ class FanartDetailViewModel(
             override fun onFinish() {}
 
             override fun onEmpty() {
-                eventIsEmpty.postValue(true)
+                eventEmptyData.postValue(true)
                 eventIsFavorite.postValue(false)
             }
 

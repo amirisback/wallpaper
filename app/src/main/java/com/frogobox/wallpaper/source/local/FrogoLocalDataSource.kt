@@ -4,11 +4,11 @@ import android.content.SharedPreferences
 import androidx.annotation.VisibleForTesting
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.response.Response
+import com.frogobox.sdk.util.AppExecutors
 import  com.frogobox.wallpaper.core.BaseCallback
 import  com.frogobox.wallpaper.model.Favorite
 import  com.frogobox.wallpaper.source.FrogoDataSource
 import  com.frogobox.wallpaper.source.dao.FavoriteDao
-import  com.frogobox.wallpaper.util.AppExecutors
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable

@@ -3,11 +3,11 @@ package com.frogobox.wallpaper.mvvm.wallpaper
 import android.app.Application
 import com.frogobox.api.pixabay.model.PixabayImage
 import com.frogobox.api.pixabay.response.Response
-import com.frogobox.wallpaper.core.BaseViewModel
+import com.frogobox.sdk.core.FrogoLiveEvent
+import com.frogobox.sdk.core.FrogoViewModel
 import com.frogobox.wallpaper.model.Wallpaper
 import com.frogobox.wallpaper.source.FrogoDataRepository
 import com.frogobox.wallpaper.source.FrogoDataSource
-import com.frogobox.wallpaper.util.SingleLiveEvent
 import com.frogobox.wallpaper.util.helper.ConstHelper
 
 /**
@@ -31,11 +31,11 @@ class WallpaperPixabayViewModel(
     private val context: Application,
     private val repository: FrogoDataRepository
 ) :
-    BaseViewModel(context) {
+    FrogoViewModel(context) {
 
     private val TOPIC_WALLPAPER = "Nature"
 
-    var wallpaperListLive = SingleLiveEvent<MutableList<Wallpaper>>()
+    var wallpaperListLive = FrogoLiveEvent<MutableList<Wallpaper>>()
 
     private fun arrayFanArt(pixabayApi: Response<PixabayImage>): MutableList<Wallpaper> {
         val arrayWallpaper = mutableListOf<Wallpaper>()
@@ -68,13 +68,13 @@ class WallpaperPixabayViewModel(
                 }
 
                 override fun onEmpty() {
-                    eventIsEmpty.postValue(true)
+                    eventEmptyData.postValue(true)
                 }
 
                 override fun onFinish() {}
 
                 override fun onFailed(statusCode: Int, errorMessage: String?) {
-                    eventFailedMessage.postValue(errorMessage)
+                    eventFailed.postValue(errorMessage)
                 }
             })
     }

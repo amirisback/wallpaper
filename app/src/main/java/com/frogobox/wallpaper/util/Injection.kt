@@ -1,12 +1,13 @@
-package  com.frogobox.wallpaper.util
+package com.frogobox.wallpaper.util
 
 import android.content.Context
 import androidx.preference.PreferenceManager
-import  com.frogobox.wallpaper.source.FrogoDataRepository
-import  com.frogobox.wallpaper.source.dao.FavoriteDao
-import  com.frogobox.wallpaper.source.local.FrogoAppDatabase
-import  com.frogobox.wallpaper.source.local.FrogoLocalDataSource
-import  com.frogobox.wallpaper.source.remote.FrogoRemoteDataSource
+import com.frogobox.sdk.util.AppExecutors
+import com.frogobox.wallpaper.source.FrogoDataRepository
+import com.frogobox.wallpaper.source.dao.FavoriteDao
+import com.frogobox.wallpaper.source.local.FrogoAppDatabase
+import com.frogobox.wallpaper.source.local.FrogoLocalDataSource
+import com.frogobox.wallpaper.source.remote.FrogoRemoteDataSource
 
 /**
  * Created by Faisal Amir
