@@ -2,8 +2,8 @@ package  com.frogobox.wallpaper.source.local
 
 import android.content.SharedPreferences
 import androidx.annotation.VisibleForTesting
-import com.frogobox.frogopixabayapi.data.model.PixabayImage
-import com.frogobox.frogopixabayapi.data.response.Response
+import com.frogobox.api.pixabay.model.PixabayImage
+import com.frogobox.api.pixabay.response.Response
 import  com.frogobox.wallpaper.core.BaseCallback
 import  com.frogobox.wallpaper.model.Favorite
 import  com.frogobox.wallpaper.source.FrogoDataSource

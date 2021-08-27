@@ -13,10 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.frogobox.wallpaper.mvvm.main.AboutUsActivity" />
-        <activity android:name="com.frogobox.wallpaper.mvvm.detail.FanartSourceActivity" />
-        <activity android:name="com.frogobox.wallpaper.mvvm.detail.FanartDetailActivity" />
-        <activity android:name="com.frogobox.wallpaper.mvvm.main.MainActivity"
+        <activity android:name=".mvvm.main.AboutUsActivity" />
+        <activity android:name=".mvvm.detail.FanartSourceActivity" />
+        <activity android:name=".mvvm.detail.FanartDetailActivity" />
+        <activity
+            android:name=".mvvm.main.MainActivity"
+            android:exported="true"
             android:theme="@style/AppThemeNoToolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

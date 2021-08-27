@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='BaseWallpaperApp'
+rootProject.name='Wallpaper'

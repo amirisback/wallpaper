@@ -1,8 +1,8 @@
 package com.frogobox.wallpaper.mvvm.wallpaper
 
 import android.app.Application
-import com.frogobox.frogopixabayapi.data.model.PixabayImage
-import com.frogobox.frogopixabayapi.data.response.Response
+import com.frogobox.api.pixabay.model.PixabayImage
+import com.frogobox.api.pixabay.response.Response
 import com.frogobox.wallpaper.core.BaseViewModel
 import com.frogobox.wallpaper.model.Wallpaper
 import com.frogobox.wallpaper.source.FrogoDataRepository

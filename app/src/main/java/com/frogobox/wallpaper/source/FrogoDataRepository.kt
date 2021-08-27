@@ -1,8 +1,8 @@
 package  com.frogobox.wallpaper.source
 
 
-import com.frogobox.frogopixabayapi.data.model.PixabayImage
-import com.frogobox.frogopixabayapi.data.response.Response
+import com.frogobox.api.pixabay.model.PixabayImage
+import com.frogobox.api.pixabay.response.Response
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.local.FrogoLocalDataSource
 import com.frogobox.wallpaper.source.remote.FrogoRemoteDataSource

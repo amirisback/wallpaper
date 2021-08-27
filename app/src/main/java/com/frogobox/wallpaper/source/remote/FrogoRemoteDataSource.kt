@@ -1,11 +1,11 @@
 package  com.frogobox.wallpaper.source.remote
 
 import android.content.Context
-import com.frogobox.frogopixabayapi.ConsumePixabayApi
-import com.frogobox.frogopixabayapi.callback.PixabayResultCallback
-import com.frogobox.frogopixabayapi.data.model.PixabayImage
-import com.frogobox.frogopixabayapi.data.response.Response
-import com.frogobox.frogopixabayapi.util.PixabayConstant
+import com.frogobox.api.core.ConsumeApiResponse
+import com.frogobox.api.pixabay.ConsumePixabayApi
+import com.frogobox.api.pixabay.model.PixabayImage
+import com.frogobox.api.pixabay.response.Response
+import com.frogobox.api.pixabay.util.PixabayUrl
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.source.FrogoDataSource
 import com.frogobox.wallpaper.util.helper.FunHelper.Func.noAction
@@ -29,7 +29,7 @@ import com.frogobox.wallpaper.util.helper.FunHelper.Func.noAction
  */
 class FrogoRemoteDataSource(private val context: Context) : FrogoDataSource {
 
-    private val consumeApi = ConsumePixabayApi(PixabayConstant.SAMPLE_API_KEY)
+    private val consumeApi = ConsumePixabayApi(PixabayUrl.API_KEY)
 
     override fun searchImage(
         query: String,
@@ -51,12 +51,12 @@ class FrogoRemoteDataSource(private val context: Context) : FrogoDataSource {
             null,
             null,
             null,
-            object : PixabayResultCallback<Response<PixabayImage>> {
-                override fun failedResult(statusCode: Int, errorMessage: String?) {
+            object : ConsumeApiResponse<Response<PixabayImage>> {
+                override fun onFailed(statusCode: Int, errorMessage: String?) {
                     callback.onFailed(statusCode, errorMessage)
                 }
 
-                override fun getResultData(data: Response<PixabayImage>) {
+                override fun onSuccess(data: Response<PixabayImage>) {
                     callback.onSuccess(data)
                 }
 
