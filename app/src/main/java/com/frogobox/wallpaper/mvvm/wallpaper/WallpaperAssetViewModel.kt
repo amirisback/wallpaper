@@ -1,13 +1,13 @@
 package com.frogobox.wallpaper.mvvm.wallpaper
 
 import android.app.Application
+import com.frogobox.sdk.core.FrogoFunc
 import com.frogobox.sdk.core.FrogoLiveEvent
 import com.frogobox.sdk.core.FrogoViewModel
 import com.frogobox.wallpaper.R
 import com.frogobox.wallpaper.model.Wallpaper
 import com.frogobox.wallpaper.source.FrogoDataRepository
 import com.frogobox.wallpaper.util.ConstHelper
-import com.frogobox.wallpaper.util.RawDataHelper
 
 /*
  * Created by faisalamir on 19/07/21
@@ -30,7 +30,7 @@ class WallpaperAssetViewModel(
     var wallpaperListLive = FrogoLiveEvent<MutableList<Wallpaper>>()
 
     fun setFanArt() {
-        val arrayLinkImage = RawDataHelper().fetchData(context, R.raw._asset_darth_vader)
+        val arrayLinkImage = FrogoFunc.fetchData<String>(context, R.raw._asset_darth_vader)
 
         val arrayWallpaper = mutableListOf<Wallpaper>()
         for (i in 0 until arrayLinkImage.size) {
