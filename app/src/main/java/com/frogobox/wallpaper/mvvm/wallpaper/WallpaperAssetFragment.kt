@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.wallpaper.core.BaseFragment
 import com.frogobox.wallpaper.databinding.FragmentWallpaperBinding
@@ -44,11 +45,21 @@ class WallpaperAssetFragment : BaseFragment<FragmentWallpaperBinding>() {
     private fun setupRV(data: List<Wallpaper>) {
 
         val callback = object : IFrogoBindingAdapter<Wallpaper, ItemGridWallpaperBinding> {
-            override fun onItemClicked(data: Wallpaper) {
+            override fun onItemClicked(
+                binding: ItemGridWallpaperBinding,
+                data: Wallpaper,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Wallpaper>
+            ) {
                 baseStartActivity<FanartDetailActivity, Wallpaper>(EXTRA_FANART, data)
             }
 
-            override fun onItemLongClicked(data: Wallpaper) {
+            override fun onItemLongClicked(
+                binding: ItemGridWallpaperBinding,
+                data: Wallpaper,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Wallpaper>
+            ) {
             }
 
             override fun setViewBinding(parent: ViewGroup): ItemGridWallpaperBinding {
@@ -59,7 +70,12 @@ class WallpaperAssetFragment : BaseFragment<FragmentWallpaperBinding>() {
                 )
             }
 
-            override fun setupInitComponent(binding: ItemGridWallpaperBinding, data: Wallpaper) {
+            override fun setupInitComponent(
+                binding: ItemGridWallpaperBinding,
+                data: Wallpaper,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Wallpaper>
+            ) {
                 Glide.with(binding.root.context).load(data.linkImage).into(binding.ivPoster)
             }
 

@@ -30,7 +30,7 @@ class WallpaperAssetViewModel(
     var wallpaperListLive = FrogoLiveEvent<MutableList<Wallpaper>>()
 
     fun setFanArt() {
-        val arrayLinkImage = FrogoFunc.fetchData<String>(context, R.raw._asset_darth_vader)
+        val arrayLinkImage = FrogoFunc.fetchRawData<String>(context, R.raw._asset_darth_vader)
 
         val arrayWallpaper = mutableListOf<Wallpaper>()
         for (i in 0 until arrayLinkImage.size) {

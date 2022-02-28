@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
 import com.frogobox.wallpaper.core.BaseFragment
 import com.frogobox.wallpaper.databinding.FragmentFavoriteBinding
@@ -58,11 +59,21 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
     private fun setupRV(data: List<Favorite>) {
 
         val callback = object : IFrogoBindingAdapter<Favorite, ItemGridWallpaperFavBinding> {
-            override fun onItemClicked(data: Favorite) {
+            override fun onItemClicked(
+                binding: ItemGridWallpaperFavBinding,
+                data: Favorite,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Favorite>
+            ) {
                 baseStartActivity<FanartDetailActivity, Favorite>(EXTRA_FAV_FANART, data)
             }
 
-            override fun onItemLongClicked(data: Favorite) {
+            override fun onItemLongClicked(
+                binding: ItemGridWallpaperFavBinding,
+                data: Favorite,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Favorite>
+            ) {
             }
 
             override fun setViewBinding(parent: ViewGroup): ItemGridWallpaperFavBinding {
@@ -73,7 +84,12 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
                 )
             }
 
-            override fun setupInitComponent(binding: ItemGridWallpaperFavBinding, data: Favorite) {
+            override fun setupInitComponent(
+                binding: ItemGridWallpaperFavBinding,
+                data: Favorite,
+                position: Int,
+                notifyListener: FrogoRecyclerNotifyListener<Favorite>
+            ) {
                 Glide.with(binding.root.context).load(data.linkImage).into(binding.ivPoster)
             }
 

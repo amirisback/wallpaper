@@ -35,7 +35,6 @@ class FrogoRemoteDataSource(private val context: Context) : FrogoDataSource {
         query: String,
         callback: FrogoDataSource.GetResponseDataCallback<Response<PixabayImage>>
     ) {
-        consumeApi.usingChuckInterceptor(context)
         consumeApi.searchImage(
             query,
             null,

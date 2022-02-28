@@ -126,7 +126,7 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>() {
         )
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_toolbar_detail, menu)
         menuItem = menu
         setFavorite(isFav)
