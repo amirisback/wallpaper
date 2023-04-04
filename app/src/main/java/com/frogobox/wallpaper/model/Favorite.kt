@@ -1,5 +1,6 @@
 package  com.frogobox.wallpaper.model
 
+import androidx.annotation.Keep
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -25,6 +26,8 @@ import  com.frogobox.wallpaper.util.ConstHelper.RoomDatabase.TABLE_NAME_FAVORITE
  *  com.frogobox.wallpaper.model
  *
  */
+
+@Keep
 @Entity(tableName = TABLE_NAME_FAVORITE)
 data class Favorite(
 

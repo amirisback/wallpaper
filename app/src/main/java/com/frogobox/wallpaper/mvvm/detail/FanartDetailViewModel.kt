@@ -1,12 +1,12 @@
 package com.frogobox.wallpaper.mvvm.detail
 
-import android.app.Application
-import com.frogobox.sdk.core.FrogoLiveEvent
-import com.frogobox.sdk.core.FrogoViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.frogobox.coresdk.response.FrogoDataResponse
+import com.frogobox.coresdk.response.FrogoStateResponse
+import com.frogobox.wallpaper.core.BaseViewModel
 import com.frogobox.wallpaper.model.Favorite
-import com.frogobox.wallpaper.source.FrogoRoomListener
-import com.frogobox.wallpaper.source.FrogoDataRepository
-import com.frogobox.wallpaper.source.FrogoDataSource
+import com.frogobox.wallpaper.source.WallpaperRepository
 
 /**
  * Created by Faisal Amir
@@ -26,81 +26,103 @@ import com.frogobox.wallpaper.source.FrogoDataSource
  *
  */
 class FanartDetailViewModel(
-    private val context: Application,
-    private val repository: FrogoDataRepository
-) : FrogoViewModel(context) {
+    private val repository: WallpaperRepository
+) : BaseViewModel() {
 
-    var favorite = FrogoLiveEvent<Favorite>()
-    var eventIsFavorite = FrogoLiveEvent<Boolean>()
+    private var _favorite = MutableLiveData<Favorite>()
+    var favorite: LiveData<Favorite> = _favorite
 
-    fun saveFavorite(
-        data: Favorite,
-        callback: FrogoRoomListener
-    ) {
-        callback.onShowProgress()
-        if (repository.saveRoomFavorite(data)) {
-            callback.onHideProgress()
-            callback.onSucces()
-            eventEmptyData.postValue(false)
-            eventIsFavorite.postValue(true)
-        } else {
-            callback.onHideProgress()
-            callback.onFailed("Failed")
-        }
+    private var _eventIsFavorite = MutableLiveData<Boolean>()
+    var eventIsFavorite: LiveData<Boolean> = _eventIsFavorite
+
+    fun saveFavorite(data: Favorite) {
+
+        repository.saveRoomFavorite(data, object : FrogoStateResponse {
+            override fun onFailed(statusCode: Int, errorMessage: String) {
+                _eventFailed.postValue(errorMessage)
+            }
+
+            override fun onFinish() {
+                _eventFinishState.postValue(true)
+            }
+
+            override fun onHideProgress() {
+                _eventShowProgressState.postValue(false)
+            }
+
+            override fun onShowProgress() {
+                _eventShowProgressState.postValue(true)
+            }
+
+            override fun onSuccess() {
+                _eventEmptyState.postValue(false)
+                _eventIsFavorite.postValue(true)
+            }
+        })
+
     }
 
-    fun deleteFavorite(tableId: Int, callback: FrogoRoomListener) {
-        callback.onShowProgress()
-        if (repository.deleteRoomFromWallpaperID(tableId)) {
-            callback.onHideProgress()
-            callback.onSucces()
-            eventEmptyData.postValue(true)
-            eventIsFavorite.postValue(false)
-        } else {
-            callback.onHideProgress()
-            callback.onFailed("Failed")
-        }
+    fun deleteFavorite(tableId: Int) {
+
+        repository.deleteRoomFromWallpaperID(tableId, object : FrogoStateResponse {
+            override fun onFailed(statusCode: Int, errorMessage: String) {
+                _eventFailed.postValue(errorMessage)
+            }
+
+            override fun onFinish() {
+                _eventFinishState.postValue(true)
+            }
+
+            override fun onHideProgress() {
+                _eventShowProgressState.postValue(false)
+            }
+
+            override fun onShowProgress() {
+                _eventShowProgressState.postValue(true)
+            }
+
+            override fun onSuccess() {
+                _eventEmptyState.postValue(true)
+                _eventIsFavorite.postValue(false)
+            }
+        })
+
     }
 
     fun getFavorite(id: Int) {
-        repository.getRoomFavorite(object :
-            FrogoDataSource.GetRoomDataCallBack<List<Favorite>> {
-            override fun onShowProgressDialog() {
-                eventShowProgress.postValue(true)
-            }
 
-            override fun onHideProgressDialog() {
-                eventShowProgress.postValue(false)
-            }
+        repository.getRoomFavorite(object : FrogoDataResponse<List<Favorite>> {
 
             override fun onSuccess(data: List<Favorite>) {
-
-                val tempFavoriteList = mutableListOf<Favorite>()
-                tempFavoriteList.clear()
-                tempFavoriteList.addAll(data)
-
-                for (i in tempFavoriteList.indices) {
-                    if (tempFavoriteList[i].id == id) {
-                        eventEmptyData.postValue(false)
-                        eventIsFavorite.postValue(true)
-                        favorite.postValue(tempFavoriteList[i])
-                        break
-                    } else {
-                        eventIsFavorite.postValue(false)
-                        eventEmptyData.postValue(true)
+                if (data.isEmpty()) {
+                    _eventEmptyState.postValue(true)
+                } else {
+                    _eventEmptyState.postValue(false)
+                    data.find { it.id == id }?.let {
+                        _favorite.postValue(it)
+                        _eventIsFavorite.postValue(true)
                     }
                 }
             }
 
-            override fun onFinish() {}
-
-            override fun onEmpty() {
-                eventEmptyData.postValue(true)
-                eventIsFavorite.postValue(false)
+            override fun onFailed(statusCode: Int, errorMessage: String) {
+                _eventFailed.postValue(errorMessage)
             }
 
-            override fun onFailed(statusCode: Int, errorMessage: String?) {}
+            override fun onFinish() {
+                _eventFinishState.postValue(true)
+            }
+
+            override fun onHideProgress() {
+                _eventShowProgressState.postValue(false)
+            }
+
+            override fun onShowProgress() {
+                _eventShowProgressState.postValue(true)
+            }
+
         })
+
     }
     
 }

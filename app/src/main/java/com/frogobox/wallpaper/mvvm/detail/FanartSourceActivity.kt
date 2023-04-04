@@ -12,12 +12,13 @@ class FanartSourceActivity : BaseActivity<ActivityFanartSourceBinding>() {
     }
 
     override fun setupViewModel() {
+
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun onCreateExt(savedInstanceState: Bundle?) {
+        super.onCreateExt(savedInstanceState)
         setupDetailActivity("")
         setupInfoCopyright()
-        setupShowAdsBanner(binding.ads.adsPhoneTabSpecialSmartBanner)
     }
 
     private fun setupInfoCopyright() {

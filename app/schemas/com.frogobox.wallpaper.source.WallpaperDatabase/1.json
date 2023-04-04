@@ -1,0 +1,46 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "cb087d3d3b3d94a2367022805909ac2b",
+    "entities": [
+      {
+        "tableName": "favorite_wallpaper_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`table_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id` INTEGER NOT NULL, `link_image` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "table_id",
+            "columnName": "table_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "linkImage",
+            "columnName": "link_image",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "table_id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cb087d3d3b3d94a2367022805909ac2b')"
+    ]
+  }
+}

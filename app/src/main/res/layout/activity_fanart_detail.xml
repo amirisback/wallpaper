@@ -22,7 +22,7 @@
         android:id="@+id/btn_set_wallpaper"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/ads"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/dimen_big_ultra_32dp"
         android:background="@drawable/background_button_primary"
@@ -31,15 +31,11 @@
         android:text="Set Home Screen"
         android:textColor="@color/colorTextWhite" />
 
-    <include
-        android:id="@+id/ads"
-        layout="@layout/ads_phone_tab_special_smart_banner" />
-
     <ProgressBar
         android:id="@+id/progress_circular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>

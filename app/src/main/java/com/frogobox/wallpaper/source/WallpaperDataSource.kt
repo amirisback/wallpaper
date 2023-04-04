@@ -1,7 +1,9 @@
 package  com.frogobox.wallpaper.source
 
-import com.frogobox.api.pixabay.model.PixabayImage
-import com.frogobox.api.pixabay.response.Response
+import com.frogobox.coreapi.pixabay.model.PixabayImage
+import com.frogobox.coreapi.pixabay.response.Response
+import com.frogobox.coresdk.response.FrogoDataResponse
+import com.frogobox.coresdk.response.FrogoStateResponse
 import  com.frogobox.wallpaper.model.Favorite
 
 /**
@@ -21,29 +23,24 @@ import  com.frogobox.wallpaper.model.Favorite
  *  com.frogobox.wallpaper.source
  *
  */
-interface FrogoDataSource {
+interface WallpaperDataSource {
 
     fun searchImage(
         query: String,
-        callback: GetResponseDataCallback<Response<PixabayImage>>
+        callback: FrogoDataResponse<Response<PixabayImage>>
     )
 
     // Room Database -------------------------------------------------------------------------------
-    fun saveRoomFavorite(data: Favorite): Boolean
+    fun saveRoomFavorite(data: Favorite, callback: FrogoStateResponse)
 
     // Get
-    fun getRoomFavorite(callback: GetRoomDataCallBack<List<Favorite>>)
+    fun getRoomFavorite(callback: FrogoDataResponse<List<Favorite>>)
 
     // Delete
-    fun deleteRoomFavorite(tableId: Int): Boolean
-    fun deleteRoomFromWallpaperID(id: Int): Boolean
+    fun deleteRoomFavorite(tableId: Int, callback: FrogoStateResponse)
+    fun deleteRoomFromWallpaperID(id: Int, callback: FrogoStateResponse)
 
     // Nuke
-    fun nukeRoomFavorite(): Boolean
+    fun nukeRoomFavorite(callback: FrogoStateResponse)
 
-    // Get
-    interface GetRoomDataCallBack<T> : FrogoResponseCallback<T>
-
-    // Get
-    interface GetResponseDataCallback<T> : FrogoResponseCallback<T>
 }

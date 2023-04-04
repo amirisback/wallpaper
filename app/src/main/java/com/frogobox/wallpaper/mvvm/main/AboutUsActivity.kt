@@ -10,10 +10,8 @@ class AboutUsActivity : BaseActivity<ActivityAboutUsBinding>() {
         return ActivityAboutUsBinding.inflate(layoutInflater)
     }
 
-    override fun setupViewModel() {
-    }
-
-    override fun setupUI(savedInstanceState: Bundle?) {
+    override fun onCreateExt(savedInstanceState: Bundle?) {
+        super.onCreateExt(savedInstanceState)
         setupDetailActivity("")
     }
 

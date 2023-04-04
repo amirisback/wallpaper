@@ -2,57 +2,64 @@ package  com.frogobox.wallpaper.mvvm.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.frogobox.recycler.core.FrogoRecyclerNotifyListener
 import com.frogobox.recycler.core.IFrogoBindingAdapter
+import com.frogobox.sdk.ext.gone
+import com.frogobox.sdk.ext.startActivityExt
+import com.frogobox.sdk.ext.visible
 import com.frogobox.wallpaper.core.BaseFragment
 import com.frogobox.wallpaper.databinding.FragmentFavoriteBinding
 import com.frogobox.wallpaper.databinding.ItemGridWallpaperFavBinding
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.mvvm.detail.FanartDetailActivity
-import com.frogobox.wallpaper.mvvm.main.MainActivity
+import com.frogobox.wallpaper.mvvm.wallpaper.WallpaperViewModel
 import com.frogobox.wallpaper.util.ConstHelper.Extra.EXTRA_FAV_FANART
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 /**
  * A simple [Fragment] subclass.
  */
 class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
 
-    private lateinit var mViewModel: FavoriteViewModel
+    private val mViewModel: WallpaperViewModel by viewModel()
 
     override fun setupViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup
+        container: ViewGroup?
     ): FragmentFavoriteBinding {
         return FragmentFavoriteBinding.inflate(inflater, container, false)
     }
 
     override fun setupViewModel() {
-        mViewModel = (activity as MainActivity).obtainFavoriteViewModel().apply {
+        mViewModel.apply {
 
-            favListLive.observe(viewLifecycleOwner, {
+            favorite.observe(viewLifecycleOwner) {
                 setupRV(it)
-            })
+            }
 
-            eventEmptyData.observe(viewLifecycleOwner, {
-                binding?.empty?.emptyView?.let { it1 -> setupEventEmptyView(it1, it) }
-            })
-
+            eventEmptyState.observe(viewLifecycleOwner) {
+                if (it) {
+                    binding.empty.emptyView.visible()
+                } else {
+                    binding.empty.emptyView.gone()
+                }
+            }
         }
     }
 
-    override fun setupUI(savedInstanceState: Bundle?) {
-        getFavorite()
+    override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreatedExt(view, savedInstanceState)
+        if (savedInstanceState == null) {
+            mViewModel.getFavorite()
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        getFavorite()
-    }
-
-    private fun getFavorite() {
         mViewModel.getFavorite()
     }
 
@@ -65,7 +72,10 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
                 position: Int,
                 notifyListener: FrogoRecyclerNotifyListener<Favorite>
             ) {
-                baseStartActivity<FanartDetailActivity, Favorite>(EXTRA_FAV_FANART, data)
+                requireContext().startActivityExt<FanartDetailActivity, Favorite>(
+                    EXTRA_FAV_FANART,
+                    data
+                )
             }
 
             override fun onItemLongClicked(
@@ -95,11 +105,11 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
 
         }
 
-        binding?.recyclerView?.injectorBinding<Favorite, ItemGridWallpaperFavBinding>()
-            ?.addData(data)
-            ?.addCallback(callback)
-            ?.createLayoutStaggeredGrid(2)
-            ?.build()
+        binding.recyclerView.injectorBinding<Favorite, ItemGridWallpaperFavBinding>()
+            .addData(data)
+            .addCallback(callback)
+            .createLayoutStaggeredGrid(2)
+            .build()
 
     }
 

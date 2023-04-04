@@ -17,5 +17,4 @@
         android:id="@+id/empty"
         layout="@layout/custom_view_empty" />
 
-
 </RelativeLayout>

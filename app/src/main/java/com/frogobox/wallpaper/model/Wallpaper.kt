@@ -1,5 +1,7 @@
 package  com.frogobox.wallpaper.model
 
+import androidx.annotation.Keep
+
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
@@ -17,6 +19,8 @@ package  com.frogobox.wallpaper.model
  *  com.frogobox.wallpaper.model
  *
  */
+
+@Keep
 data class Wallpaper(
     var id: Int = 0,
     var linkImage: String? = ""
