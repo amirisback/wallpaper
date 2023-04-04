@@ -27,52 +27,94 @@ import java.net.URL
  */
 object WallpaperHelper {
 
-    fun setHomeWallpaper(context: Context, linkImage: String): Boolean {
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-
+    fun setHomeScreen(context: Context, res: Any, callback: ActionCallback) {
         val wallpaperManager = WallpaperManager.getInstance(context)
-        return try {
-            val ins = URL(linkImage).openStream()
-            wallpaperManager.setStream(ins)
-            true
-        } catch (e: IOException) {
-            e.printStackTrace()
-            false
-        }
-    }
-
-    fun setLockScreenWallpaper(context: Context, linkImage: String): Boolean {
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
-
-        val wallpaperManager = WallpaperManager.getInstance(context)
-        try {
-            val ins = URL(linkImage).openStream()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                wallpaperManager.setStream(ins, null, true, WallpaperManager.FLAG_LOCK)
-            } else {
-                Toast.makeText(
-                    context,
-                    "Lock screen walpaper not supported",
-                    Toast.LENGTH_SHORT
-                ).show()
+        when (res) {
+            is Int -> {
+                wallpaperManager.setResource(res)
+                callback.onActionSuccess()
             }
-            return true
-        } catch (e: IOException) {
-            e.printStackTrace()
-            return false
+            is String -> {
+                val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+                StrictMode.setThreadPolicy(policy)
+                try {
+                    val ins = URL(res).openStream()
+                    wallpaperManager.setStream(ins)
+                    callback.onActionSuccess()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                    callback.onActionFailed(e.message.toString())
+                }
+            }
         }
     }
 
-    fun setHomeLockWallpaper(context: Context, linkImage: String): Boolean {
-        return try {
-            setHomeWallpaper(context, linkImage)
-            setLockScreenWallpaper(context, linkImage)
-            true
-        } catch (e: IOException) {
-            e.printStackTrace()
-            false
+    fun setLockScreen(context: Context, res: Any, callback: ActionCallback) {
+        val wallpaperManager = WallpaperManager.getInstance(context)
+
+        when (res) {
+            is Int -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    wallpaperManager.setResource(res, WallpaperManager.FLAG_LOCK)
+                    callback.onActionSuccess()
+                } else {
+                    callback.onActionFailed("Lock screen walpaper not supported")
+                }
+            }
+
+            is String -> {
+                val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+                StrictMode.setThreadPolicy(policy)
+                try {
+                    val linkImage = URL(res).openStream()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        wallpaperManager.setStream(linkImage, null, true, WallpaperManager.FLAG_LOCK)
+                        callback.onActionSuccess()
+                    } else {
+                        callback.onActionFailed("Lock screen walpaper not supported")
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                    callback.onActionFailed(e.message.toString())
+                }
+            }
+
+        }
+
+    }
+
+    fun setBothScreen(context: Context, res: Any, callback: ActionCallback) {
+        val wallpaperManager = WallpaperManager.getInstance(context)
+
+        when (res) {
+            is Int -> {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    wallpaperManager.setResource(res)
+                    wallpaperManager.setResource(res, WallpaperManager.FLAG_LOCK)
+                    callback.onActionSuccess()
+                } else {
+                    callback.onActionFailed("Lock screen walpaper not supported")
+                }
+            }
+
+            is String -> {
+                val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+                StrictMode.setThreadPolicy(policy)
+                try {
+                    val linkImage = URL(res).openStream()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        wallpaperManager.setStream(linkImage)
+                        wallpaperManager.setStream(linkImage, null, true, WallpaperManager.FLAG_LOCK)
+                        callback.onActionSuccess()
+                    } else {
+                        callback.onActionFailed("Lock screen walpaper not supported")
+                    }
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                    callback.onActionFailed(e.message.toString())
+                }
+            }
+
         }
     }
 

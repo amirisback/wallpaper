@@ -14,9 +14,10 @@ import com.frogobox.wallpaper.core.BaseActivity
 import com.frogobox.wallpaper.databinding.ActivityFanartDetailBinding
 import com.frogobox.wallpaper.model.Favorite
 import com.frogobox.wallpaper.model.Wallpaper
+import com.frogobox.wallpaper.util.ActionCallback
 import com.frogobox.wallpaper.util.ConstHelper.Extra.EXTRA_FANART
 import com.frogobox.wallpaper.util.ConstHelper.Extra.EXTRA_FAV_FANART
-import com.frogobox.wallpaper.util.WallpaperHelper.setHomeLockWallpaper
+import com.frogobox.wallpaper.util.WallpaperHelper.setBothScreen
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>() {
@@ -64,13 +65,17 @@ class FanartDetailActivity : BaseActivity<ActivityFanartDetailBinding>() {
         binding.apply {
             btnSetWallpaper.setOnClickListener {
                 progressCircular.visibility = View.VISIBLE
-                if (setHomeLockWallpaper(this@FanartDetailActivity, linkImage)) {
-                    progressCircular.visibility = View.GONE
-                    showToast(resources.getString(R.string.text_succes_applied_home_screen))
-                } else {
-                    progressCircular.visibility = View.GONE
-                    showToast(resources.getString(R.string.text_failed_applied_home_screen))
-                }
+                setBothScreen(this@FanartDetailActivity, linkImage, object: ActionCallback{
+                    override fun onActionSuccess() {
+                        progressCircular.visibility = View.GONE
+                        showToast(resources.getString(R.string.text_succes_applied_home_screen))
+                    }
+
+                    override fun onActionFailed(message: String) {
+                        progressCircular.visibility = View.GONE
+                        showToast(resources.getString(R.string.text_failed_applied_home_screen))
+                    }
+                })
             }
         }
     }
