@@ -22,6 +22,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
  */
 class WallpaperPixabayFragment : BaseFragment<FragmentWallpaperBinding>() {
 
+    companion object {
+        private const val TOPIC_WALLPAPER = "Star Wars"
+    }
+
     private val mViewModel: WallpaperViewModel by viewModel()
 
     override fun setupViewBinding(
@@ -42,7 +46,7 @@ class WallpaperPixabayFragment : BaseFragment<FragmentWallpaperBinding>() {
     override fun onViewCreatedExt(view: View, savedInstanceState: Bundle?) {
         super.onViewCreatedExt(view, savedInstanceState)
         if (savedInstanceState == null) {
-            mViewModel.searchImage()
+            mViewModel.searchImage(TOPIC_WALLPAPER)
         }
     }
 

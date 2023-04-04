@@ -26,10 +26,9 @@ object ConstHelper {
     }
 
     object Extra {
-        const val BASE_EXTRA = BuildConfig.APPLICATION_ID
-        const val EXTRA_OPTION = "$BASE_EXTRA.EXTRA_OPTION"
-        const val EXTRA_FANART = "$BASE_EXTRA.EXTRA_FANART"
-        const val EXTRA_FAV_FANART = "$BASE_EXTRA.EXTRA_FAV_FANART"
+        const val EXTRA_OPTION = "EXTRA_OPTION"
+        const val EXTRA_FANART = "EXTRA_FANART"
+        const val EXTRA_FAV_FANART = "EXTRA_FAV_FANART"
     }
 
     object RoomDatabase {

@@ -31,8 +31,6 @@ import com.frogobox.wallpaper.util.ConstHelper
 class WallpaperViewModel(
     private val repository: WallpaperRepository
 ) : BaseViewModel() {
-
-    private val TOPIC_WALLPAPER = "Nature"
     
     private var _wallpaper = MutableLiveData<List<Wallpaper>>()
     var wallpaper: LiveData<List<Wallpaper>> = _wallpaper
@@ -54,9 +52,9 @@ class WallpaperViewModel(
         _wallpaper.postValue(arrayWallpaper)
     }
 
-    fun searchImage() {
+    fun searchImage(query: String) {
         repository.searchImage(
-            TOPIC_WALLPAPER,
+            query,
             object : FrogoDataResponse<Response<PixabayImage>> {
                 
                 override fun onSuccess(data: Response<PixabayImage>) {

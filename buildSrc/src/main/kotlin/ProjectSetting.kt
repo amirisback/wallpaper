@@ -15,7 +15,6 @@ object ProjectSetting {
 
     // Project settings
     const val NAME_APP = "Wallpaper"
-    const val TOPIC = "Nature"
 
     // Version App
     const val VERSION_MAJOR = 1

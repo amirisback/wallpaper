@@ -25,9 +25,6 @@ android {
         // Naming APK // AAB
         setProperty("archivesBaseName", "${ProjectSetting.NAME_APK}-${versionCode}")
 
-        // Search for event by event name
-        buildConfigField("String", "TOPIC_WALLPAPER", "\"${ProjectSetting.TOPIC}\"")
-
         // Inject app name for debug
         resValue("string", "app_name", ProjectSetting.NAME_APP_DEBUG)
 
